@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/contentModel.xml
+/modules.xml
+/projectSettingsUpdater.xml
+/.idea.circle-of-life.iml
+# Datasource local storage ignored files
+/../../../../../../../../../:\Users\fadin\Desktop\Projects\circle-of-life\.idea\.idea.circle-of-life\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
