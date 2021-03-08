@@ -630,8 +630,8 @@ GameObject:
   m_Component:
   - component: {fileID: 406736}
   - component: {fileID: 9506702}
-  - component: {fileID: 1804497218}
   - component: {fileID: 1804497219}
+  - component: {fileID: 3729208226963643976}
   m_Layer: 8
   m_Name: sheep
   m_TagString: Untagged
@@ -678,20 +678,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1804497218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 106736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c467e33f4d2d0a34eafd99c32fca3e55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  agent: {fileID: 1804497219}
 --- !u!195 &1804497219
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -714,6 +700,22 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &3729208226963643976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08b9f219d4c4274f95438b915f1367a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wanderRadius: 0
+  wanderTimer: 0
+  agent: {fileID: 0}
+  timer: 0
 --- !u!1 &106738
 GameObject:
   m_ObjectHideFlags: 0

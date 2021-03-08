@@ -6,13 +6,13 @@ using UnityEngine.PlayerLoop;
 
 public class BasePlayer
 {
-    public float health = 100f;
-    public float basicDamage = 10f;
-    public float specialDamage = 25f;
-    public float basicAttackRange;
-    public float specialAttackRange;
-    public GameObject favoriteFood;
-    public NavMeshAgent agent;
+    [SerializeField] private float health = 100f;
+    [SerializeField] private float basicDamage = 10f;
+    [SerializeField] private float specialDamage = 25f;
+    [SerializeField] private GameObject basicRange;
+    [SerializeField] private GameObject detectionRange;
+    [SerializeField] private GameObject favoriteFood;
+    [SerializeField] private NavMeshAgent agent;
 
     public IEnumerator Move(Vector3 position)
     {
@@ -39,4 +39,5 @@ public class BasePlayer
         health += healthAmount;
         yield return new WaitForFixedUpdate();
     }
+    
 }
