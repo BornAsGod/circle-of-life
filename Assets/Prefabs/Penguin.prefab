@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 594402927798847826}
   - component: {fileID: 1196984381151070234}
   - component: {fileID: 2092949462041923864}
+  - component: {fileID: 331061280299165012}
   m_Layer: 11
   m_Name: DetectionSphere
   m_TagString: Untagged
@@ -53,6 +54,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &331061280299165012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102093940886929261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fc4c5f197bb835459be871342ef425f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3661456170123696085
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,6 +77,7 @@ GameObject:
   - component: {fileID: 2737303394563239234}
   - component: {fileID: 710538676187702776}
   - component: {fileID: 1310730690782108199}
+  - component: {fileID: 2283732495646547128}
   m_Layer: 10
   m_Name: AttackRange
   m_TagString: Untagged
@@ -106,6 +120,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2283732495646547128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3661456170123696085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602cdeb2ddc994649acfc6cd46e5a734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5550827986322953615
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,7 +458,7 @@ GameObject:
   - component: {fileID: 5550827986266864275}
   m_Layer: 0
   m_Name: Penguin
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

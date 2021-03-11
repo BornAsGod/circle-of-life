@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9126366112038655787}
   - component: {fileID: 2099044196863730851}
   - component: {fileID: 3271441144795604907}
+  - component: {fileID: 858074796962444082}
   m_Layer: 10
   m_Name: AttackRange
   m_TagString: Untagged
@@ -53,6 +54,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &858074796962444082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329308368277966595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602cdeb2ddc994649acfc6cd46e5a734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7635323703388832384
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,7 +1017,7 @@ GameObject:
   - component: {fileID: 7635323702083613286}
   m_Layer: 0
   m_Name: Cat
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1216,6 +1229,7 @@ GameObject:
   - component: {fileID: 5230215252749946185}
   - component: {fileID: 839091635869429900}
   - component: {fileID: 5377744020055580265}
+  - component: {fileID: 7463520400662986781}
   m_Layer: 11
   m_Name: DetectionSphere
   m_TagString: Untagged
@@ -1258,3 +1272,15 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7463520400662986781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8969255698330193113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fc4c5f197bb835459be871342ef425f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
