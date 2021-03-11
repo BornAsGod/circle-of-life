@@ -13,6 +13,7 @@ public class BasePlayer
     [SerializeField] private GameObject detectionRange;
     [SerializeField] private GameObject favoriteFood;
     [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private float specialAttackBar = 0f;
 
     public IEnumerator Move(Vector3 position)
     {
