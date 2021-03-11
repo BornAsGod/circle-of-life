@@ -30648,8 +30648,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Food: {fileID: 3274676139488079294, guid: f4de30f5637fadc4a8d5aa9a943b9c64, type: 3}
   Mid: {fileID: 1375684535}
+  grass: {fileID: 630847950}
+  sand: {fileID: 14095187}
+  water: {fileID: 1939255083}
+  dirt: {fileID: 1107891643}
+  sandstone: {fileID: 1380847002}
   Maxfood: 3
   FoodSpawned: 0
+  spawnFood:
+  - {fileID: 1000013051596076, guid: b93286b7dfa93834caec88d1044606c2, type: 3}
+  - {fileID: 1000011395917184, guid: 630adda25e718324a80512d3e4d69e13, type: 3}
+  - {fileID: 1000012087637210, guid: cc3c5a058e6bb634781860012b9aa683, type: 3}
+  - {fileID: 1000013191416304, guid: c48a3ebf277ae9f46bc06489f5850636, type: 3}
+  - {fileID: 1000011216760202, guid: 78a6a596f3cdc2641b44bb3d371c8db0, type: 3}
+  spawnBiome:
+  - {fileID: 1375684534}
+  - {fileID: 1375684534}
+  - {fileID: 630847949}
+  - {fileID: 14095186}
+  - {fileID: 1939255082}
+  - {fileID: 1107891642}
+  - {fileID: 1380847001}
 --- !u!4 &547527475
 Transform:
   m_ObjectHideFlags: 0
