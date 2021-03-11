@@ -6,22 +6,28 @@ using UnityEngine.PlayerLoop;
 
 public class BasePlayer
 {
+    [Header("Player Attributes")]
     [SerializeField] private float health = 100f;
     [SerializeField] private float basicDamage = 10f;
     [SerializeField] private float specialDamage = 25f;
-    [SerializeField] private GameObject basicRange;
-    [SerializeField] private GameObject detectionRange;
-    [SerializeField] private GameObject favoriteFood;
-    [SerializeField] private NavMeshAgent agent;
+    public GameObject favoriteFood;
     [SerializeField] private float specialAttackBar = 0f;
+    [Header("Detection")] 
+    [SerializeField] private AttackScript basicRange;
+    [SerializeField] private DetectionScript detectionRange;
+    [Header("NavMesh")]
+    [SerializeField] private NavMeshAgent agent;
+
 
     public IEnumerator Move(Vector3 position)
     {
         agent.destination = position;
         yield return new WaitForFixedUpdate();
     }
-    public IEnumerator BasicAttack(float attackRange)
+    public IEnumerator BasicAttack()
     {
+        basicRange.isAttacking = true;
+        basicRange.Damage = basicDamage;
         yield return new WaitForFixedUpdate();
     }    
     public IEnumerator SpecialAttack(float attackRange)
@@ -35,9 +41,10 @@ public class BasePlayer
         yield return new WaitForFixedUpdate();
     }
 
-    public IEnumerator GetHealth(float healthAmount)
+    public IEnumerator GetFood(float healthAmount, float specialAttackMana)
     {
         health += healthAmount;
+        specialAttackBar += specialAttackMana;
         yield return new WaitForFixedUpdate();
     }
     
