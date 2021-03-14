@@ -7,6 +7,7 @@ public class CatPlayer : MonoBehaviour
 
     public int health;
     public int currentHealth;
+    public Vector3 playerPos;
 
     public HealthBar healthBar;
 
@@ -24,6 +25,9 @@ public class CatPlayer : MonoBehaviour
         {
             TakeDamage(10);
         }
+
+        Vector3 playerPos = transform.position;
+        transform.position = playerPos;
     }
 
     void TakeDamage(int damage)
