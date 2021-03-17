@@ -13,17 +13,17 @@ public class FadiAI : BasePlayer
             if (!enemyDetected)
             {
                 Vector3 newPos = RandomNavSphere(mTransform.position, wanderRadius, -1);
-                Move(newPos);
+                yield return Move(newPos);
             }
 
             if (enemyDetected)
             {
-                Move(enemyPosition);
+                yield return Move(enemyPosition);
             }
 
             if (enemyAttackRange)
             {
-                BasicAttack();
+                yield return BasicAttack();
             }
         }
         yield return null;

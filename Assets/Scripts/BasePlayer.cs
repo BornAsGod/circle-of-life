@@ -23,10 +23,10 @@ public class BasePlayer
     [Header("NavMesh")]
     [SerializeField] private NavMeshAgent agent;
 
-    public IEnumerator SetTransform(Transform transform)
+    public void SetPlayer(Transform transform, NavMeshAgent _agent)
     {
         mTransform = transform;
-        yield return null;
+        agent = _agent;
     }
 
     public IEnumerator Move(Vector3 position)
