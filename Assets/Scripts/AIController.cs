@@ -6,9 +6,23 @@ using UnityEngine.AI;
 
 public class AIController : MonoBehaviour
 {
-    public BasePlayer _Ai = new FadiAI();
+    public int AiId;
+    public BasePlayer _Ai;
 
     public NavMeshAgent agent;
+
+    private void Awake()
+    {
+        switch (AiId)
+        {
+            case 0:
+                _Ai = new FadiAI();
+                break;
+            case 1:
+                _Ai = new ValentinAI();
+                break;
+        }
+    }
 
     private void Start()
     {
