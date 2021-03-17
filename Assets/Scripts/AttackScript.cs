@@ -5,37 +5,42 @@ using UnityEngine;
 
 public class AttackScript : MonoBehaviour
 {
-    public bool inRange = false;
     public bool isAttacking = false;
-    [HideInInspector] public float Damage = 0;
-    private void OnCollisionEnter(Collision other)
+    public bool inRange = false;
+    [SerializeField] private BasePlayer AiScript;
+    [SerializeField] private float Damage = 10f;
+
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             inRange = true;
+            AiScript.OnPlayerInRange();
         }
     }
 
-    private void OnCollisionStay(Collision other)
-    {
-        if (inRange && isAttacking)
-        {
-            StartCoroutine(Attack(other, Damage));
-        }
-    }
-
-    private void OnCollisionExit(Collision other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             inRange = false;
-            isAttacking = false;
+            AiScript.OnPlayerOutOfRange();
         }
     }
 
-    public IEnumerator Attack(Collision other, float damage)
+    private void OnTriggerStay(Collider other)
     {
-        other.gameObject.GetComponent<BasePlayer>().TakeDamage(damage);
-        yield return new WaitForSeconds(2f);
+        if (!isAttacking)
+        {
+            return;
+        }
+
+        if (!inRange)
+        {
+            return;
+        }
+
+        other.GetComponent<BasePlayer>().TakeDamage(Damage);
+        isAttacking = false;
     }
 }
