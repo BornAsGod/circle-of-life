@@ -72,7 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wanderRadius: 200
   wanderTimer: 5
-  agent: {fileID: 4013435065591491046}
+  agent: {fileID: 0}
 --- !u!195 &4013435065591491046
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1568,8 +1568,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inRange: 0
-  isAttacking: 0
-  Damage: 0
 --- !u!1 &7716009010906859093
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.PlayerLoop;
 
-public class BasePlayer : MonoBehaviour
+public class BasePlayer
 {
     [Header("Player Attributes")]
     [SerializeField] private float health = 100f;
