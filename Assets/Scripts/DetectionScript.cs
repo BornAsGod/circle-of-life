@@ -5,18 +5,27 @@ using UnityEngine;
 
 public class DetectionScript : MonoBehaviour
 {
-    [SerializeField] private Transform mPlayer;
-    [SerializeField] private BasePlayer AiScript;
+    private BasePlayer AiScript;
+
+    private void Start()
+    {
+        AiScript = GetComponentInParent<AIController>()._Ai;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.CompareTag("Player")) {return;}
-        var distance = Vector3.Distance(mPlayer.position, other.transform.position);
+        float distance = Vector3.Distance(transform.root.position, other.transform.position);
         AiScript.OnPlayerDetected(distance, other.transform.position);
     }
 
     private void OnTriggerStay(Collider other)
     {
-        var distance = Vector3.Distance(mPlayer.position, other.transform.position);
+        if (!other.CompareTag("Player"))
+        {
+            return;
+        }
+        float distance = Vector3.Distance(transform.root.position, other.transform.position);
         AiScript.OnPlayerDetected(distance, other.transform.position);
     }
 

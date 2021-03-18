@@ -7,8 +7,13 @@ public class AttackScript : MonoBehaviour
 {
     public bool isAttacking = false;
     public bool inRange = false;
-    [SerializeField] private BasePlayer AiScript;
+    private BasePlayer AiScript;
     [SerializeField] private float Damage = 10f;
+
+    private void Start()
+    {
+        AiScript = GetComponent<AIController>()._Ai;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
