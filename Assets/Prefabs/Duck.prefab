@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4013435066255940838}
   - component: {fileID: 4013435066265826938}
-  - component: {fileID: 4013435065591491047}
   - component: {fileID: 4013435065591491046}
   - component: {fileID: -3477272583294321986}
   - component: {fileID: -7986505989227072145}
+  - component: {fileID: 2312484657636443159}
   m_Layer: 8
   m_Name: Duck
   m_TagString: Player
@@ -60,21 +60,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4013435065591491047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4013435066256295942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e08b9f219d4c4274f95438b915f1367a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wanderRadius: 200
-  wanderTimer: 5
-  agent: {fileID: 0}
 --- !u!195 &4013435065591491046
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -127,6 +112,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2312484657636443159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4013435066256295942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07951659c73067947b80568858ac3c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: {fileID: 6478835412593082375}
+  detect: {fileID: 8764005670972091167}
+  AiId: 1
+  agent: {fileID: 4013435065591491046}
 --- !u!1 &4013435066256296120
 GameObject:
   m_ObjectHideFlags: 0

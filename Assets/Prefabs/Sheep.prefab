@@ -807,6 +807,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07951659c73067947b80568858ac3c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attack: {fileID: 5304755114234501464}
+  detect: {fileID: 3371439693189877183}
   AiId: 0
   agent: {fileID: 377438618466379202}
 --- !u!54 &8950007176487693256

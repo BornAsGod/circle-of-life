@@ -1,44 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
 
 public class FadiAI : BasePlayer
 {
+    
     public override IEnumerator RunAI()
     {
         while (health > 0f)
         {
-            if (!enemyDetected)
+            //Prioritizing enemies over food, that's why I am checking for enemies first
+            if (DetectedEnemies.Count > 0) //If there are detected enemies
             {
-                Vector3 newPos = RandomNavSphere(mTransform.position, wanderRadius, -1);
-                yield return Move(newPos);
+                yield return Move(GetClosestEnemy()); //Move to closest enemy
             }
 
-            if (enemyDetected)
+            if (DetectedFood.Count > 0)//If food detected
             {
-                yield return Move(enemyPosition);
+                //Food detected code
+                yield return Move(GetClosestFood()); //Go to closest food
             }
 
-            if (enemyAttackRange)
-            {
-                yield return BasicAttack();
-            }
+            yield return Move(wanderTarget); //If nothing is detected, wander around
         }
         yield return null;
     }
-
-    public float wanderRadius = 30f;
-    public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask) {
-        Vector3 randDirection = Random.insideUnitSphere * dist;
- 
-        randDirection += origin;
- 
-        NavMeshHit navHit;
- 
-        NavMesh.SamplePosition (randDirection, out navHit, dist, layermask);
- 
-        return navHit.position;
-    }
+    
 }

@@ -457,9 +457,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5550827986323121947}
   - component: {fileID: 5550827986330279715}
-  - component: {fileID: 5550827986266864272}
   - component: {fileID: 5550827986266864275}
   - component: {fileID: 8326300966771306665}
+  - component: {fileID: 1141297901639914159}
   m_Layer: 8
   m_Name: Penguin
   m_TagString: Player
@@ -506,21 +506,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5550827986266864272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5550827986322967291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e08b9f219d4c4274f95438b915f1367a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wanderRadius: 200
-  wanderTimer: 5
-  agent: {fileID: 0}
 --- !u!195 &5550827986266864275
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -559,6 +544,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1141297901639914159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5550827986322967291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07951659c73067947b80568858ac3c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: {fileID: 0}
+  detect: {fileID: 0}
+  AiId: 0
+  agent: {fileID: 0}
 --- !u!1 &5550827986322967293
 GameObject:
   m_ObjectHideFlags: 0

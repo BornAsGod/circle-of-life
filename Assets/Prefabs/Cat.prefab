@@ -1016,9 +1016,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7635323703388550812}
   - component: {fileID: 7635323703379562556}
-  - component: {fileID: 7635323702083613285}
   - component: {fileID: 7635323702083613286}
   - component: {fileID: 662472100568119601}
+  - component: {fileID: -3787875925157559667}
   m_Layer: 8
   m_Name: Cat
   m_TagString: Player
@@ -1063,21 +1063,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7635323702083613285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7635323703388832444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e08b9f219d4c4274f95438b915f1367a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wanderRadius: 200
-  wanderTimer: 5
-  agent: {fileID: 0}
 --- !u!195 &7635323702083613286
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1116,6 +1101,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-3787875925157559667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7635323703388832444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07951659c73067947b80568858ac3c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: {fileID: 0}
+  detect: {fileID: 0}
+  AiId: 0
+  agent: {fileID: 0}
 --- !u!1 &7635323703388832504
 GameObject:
   m_ObjectHideFlags: 0
