@@ -26,7 +26,6 @@ public class BasePlayer
     public float health = 100f; //Player health
     private float specialDamage = 25f; //Special attack damage
     private float basicDamage = 10f; //Basic attack damage
-    public GameObject favoriteFood; //Favorite food
     private float specialAttackBar = 0f; //Mana bar
     //Detection and Navigation
     public List<ScannedEnemy> DetectedEnemies = new List<ScannedEnemy>(); //List of detected enemies
@@ -117,6 +116,18 @@ public class BasePlayer
             }
         }
         return DetectedFood[foodID].Position;
+    }
+    
+    //Detection events
+
+    public virtual void ScannedEnemyEvent(ScannedEnemy enemy) //Triggers when an enemy is detected
+    {
+        //Override in your AI script
+    }
+
+    public virtual void ScannedFoodEvent(FoodScanned food) //Triggers when food is detected
+    {
+        //Override in your AI script
     }
     
 }

@@ -17,34 +17,30 @@ public class DetectionScript : MonoBehaviour
                 return;
             }
             //Add food data to list
+            Debug.Log("Food Detected!");
             FoodScanned scannedFood = new FoodScanned();
             scannedFood.Distance = Vector3.Distance(transform.root.position, other.transform.position);
             scannedFood.Type = other.gameObject;
             scannedFood.Position = other.transform.position;
             AiScript.DetectedFood.Add(scannedFood);
+            AiScript.ScannedFoodEvent(scannedFood); //Call scanned food event
+            return;
         }
         //Add enemy data to list
+        Debug.Log("Enemy Detected!");
         ScannedEnemy scannedEnemy = new ScannedEnemy();
         scannedEnemy.Distance = Vector3.Distance(transform.root.position, other.transform.position);
         scannedEnemy.Position = other.transform.position;
         scannedEnemy.Object = other.gameObject;
         AiScript.DetectedEnemies.Add(scannedEnemy);
+        AiScript.ScannedEnemyEvent(scannedEnemy); //Call scanned enemy event
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (!other.CompareTag("Player"))
         {
-            if (!other.CompareTag("Food"))
-            {
-                return;
-            }
-            //Update in-range food data
-            foreach (var food in AiScript.DetectedFood.ToList())
-            {
-                food.Position = food.Type.transform.position;
-                food.Distance = Vector3.Distance(transform.root.position, food.Type.transform.position);
-            }
+            return;
         }
         //Update in-range enemy data
         foreach (var enemy in AiScript.DetectedEnemies.ToList())
@@ -68,8 +64,11 @@ public class DetectionScript : MonoBehaviour
                 if (food.Type == other.gameObject)
                 {
                     AiScript.DetectedFood.Remove(food);
+                    Debug.Log("Food Lost!");
                 }
             }
+
+            return;
         }
         //Remove out-of-range enemies from list
         foreach (var enemy in AiScript.DetectedEnemies.ToList())
@@ -77,6 +76,7 @@ public class DetectionScript : MonoBehaviour
             if (enemy.Object == other.gameObject)
             {
                 AiScript.DetectedEnemies.Remove(enemy);
+                Debug.Log("Enemy Lost!");
             }
         }
     }

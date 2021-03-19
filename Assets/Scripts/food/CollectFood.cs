@@ -5,17 +5,16 @@ using UnityEngine;
 
 public class CollectFood : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        BasePlayer player = other.gameObject.GetComponent<BasePlayer>();
-        if (player.favoriteFood == this.gameObject)
+        if (!other.gameObject.CompareTag("Collector"))
         {
-            player.GetFood(15f, 25f);
-            Destroy(this.gameObject);
+            return;
         }
-        else
-        {
-            player.GetFood(15f, 0f);
-        }
+
+        Debug.Log("Food collision detected!");
+        AIController player = other.gameObject.GetComponentInParent<AIController>();
+        player.OnFoodCollected(this.gameObject);
+        Destroy(this.gameObject);
     }
 }
