@@ -45,8 +45,11 @@ public class DetectionScript : MonoBehaviour
         //Update in-range enemy data
         foreach (var enemy in AiScript.DetectedEnemies.ToList())
         {
-            enemy.Position = enemy.Object.transform.position;
-            enemy.Distance = Vector3.Distance(transform.root.position, enemy.Object.transform.position);
+            Vector3 _position = other.transform.position;
+            if(other.gameObject != enemy.Object )
+                return;
+            enemy.Position = _position;
+            enemy.Distance = Vector3.Distance(transform.root.position, _position);
         }
     }
 
