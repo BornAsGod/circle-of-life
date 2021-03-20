@@ -39,33 +39,53 @@ public class BasePlayer
 
     public void SetPlayer(NavMeshAgent _agent, GameObject food) //Gets set in AIController on start
     {
+        /*
+         * Gets called automatically on start to set some of the players properties
+         */
         agent = _agent;
         favoriteFood = food;
     }
 
     public IEnumerator Move(Vector3 position) //Moves to defined position
     {
+        /*
+         * Moves player to entered position
+         */
         agent.destination = position;
         yield return new WaitForFixedUpdate();
     }
     public IEnumerator BasicAttack(BasePlayer enemy) //Attacks in range player
     {
+        /*
+         * Calls TakeDamage on the in-range enemy
+         */
         enemy.TakeDamage(basicDamage);
         yield return new WaitForFixedUpdate();
     }    
     public IEnumerator SpecialAttack(float attackRange) //Special attack projectile
     {
+        /*
+         * Launches projectile that damages enemy on collision
+         */
         yield return new WaitForFixedUpdate();
     }
 
     public IEnumerator TakeDamage(float damage) //Decrease health when attacked
     {
+        /*
+         * Gets called automatically on the player taking damage
+         * as a result of BasicAttack call or collision with a special attack projectile
+         */
         health -= damage;
         yield return new WaitForFixedUpdate();
     }
 
     public IEnumerator GetFood(float healthAmount, float specialAttackMana) //Adjusts health/mana on food collection
     {
+        /*
+         * Gets automatically called when colliding with food
+         * favorite food check is done in AIController, and the right values get added
+         */
         health += healthAmount;
         specialAttackBar += specialAttackMana;
         if (health > 100f)
@@ -84,16 +104,38 @@ public class BasePlayer
     
     public virtual IEnumerator RunAI() //Runs AI
     {
+        /*
+         * This is where you call the functions
+         * Override this in your AI script take a look at FadiAI
+         *
+         * Set it to run while health > 0
+         */
         yield return null;
     }
     
     public void SetWanderTarget(Vector3 target) //Ran by AIController to get a random position for wandering
     {
+        /*
+         * To use it call:
+         * yield return Move(wanderTarget)
+         *
+         * a random position on the navmesh within a 150f radius
+         * gets changed every 5 seconds
+         */
         wanderTarget = target;
     }
 
     public Vector3 GetClosestEnemy() //Checks for closest enemy in DetectedEnemies list and returns its position
     {
+        /*
+         * Returns the position of the closest enemy
+         *
+         * Example:
+         *
+         * yield return Move(GetClosestEnemy());
+         *
+         * moves the player towards the closest enemy
+         */
         if (DetectedEnemies.Count == 1)
         {
             return DetectedEnemies[0].Position;
@@ -114,6 +156,14 @@ public class BasePlayer
     
     public Vector3 GetClosestFood() //Checks for closest food in DetectedFood list and returns its position
     {
+        /*
+         * Returns the position of the closest food detected
+         *
+         * Example:
+         *
+         * yield return Move(GetClosestFood());
+         *
+         */
         if (DetectedFood.Count == 1)
         {
             return DetectedFood[0].Position;
