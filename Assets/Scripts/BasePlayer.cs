@@ -153,10 +153,12 @@ public class BasePlayer
          * Override in your AI script
          * FoodScanned have attributes like:
          * Position (Vector 3) => yield return Move(food.Position)
+         * 
          * Distance (Float) => if(food.Distance > 30f)
          * {
          * yield return Move(food.Position);
          * }
+         * 
          * Type (GameObject) => if(food.Type == favoriteFood)
          * {
          * yield return Move(food.Position);
