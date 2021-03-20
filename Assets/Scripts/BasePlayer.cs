@@ -33,7 +33,7 @@ public class BasePlayer
     //Detection and Navigation
     public List<ScannedEnemy> DetectedEnemies = new List<ScannedEnemy>(); //List of detected enemies
     public List<FoodScanned> DetectedFood = new List<FoodScanned>(); //List of detected foods
-    private NavMeshAgent agent; //Player nav mesh agent
+    public NavMeshAgent agent; //Player nav mesh agent
     //Wandering
     public Vector3 wanderTarget = Vector3.zero;
 
@@ -54,33 +54,30 @@ public class BasePlayer
         agent.destination = position;
         yield return new WaitForFixedUpdate();
     }
-    public IEnumerator BasicAttack(BasePlayer enemy) //Attacks in range player
+    public void BasicAttack(BasePlayer enemy) //Attacks in range player
     {
         /*
          * Calls TakeDamage on the in-range enemy
          */
         enemy.TakeDamage(basicDamage);
-        yield return new WaitForFixedUpdate();
     }    
-    public IEnumerator SpecialAttack(float attackRange) //Special attack projectile
+    public void SpecialAttack(float attackRange) //Special attack projectile
     {
         /*
          * Launches projectile that damages enemy on collision
          */
-        yield return new WaitForFixedUpdate();
     }
 
-    public IEnumerator TakeDamage(float damage) //Decrease health when attacked
+    public void TakeDamage(float damage) //Decrease health when attacked
     {
         /*
          * Gets called automatically on the player taking damage
          * as a result of BasicAttack call or collision with a special attack projectile
          */
         health -= damage;
-        yield return new WaitForFixedUpdate();
     }
 
-    public IEnumerator GetFood(float healthAmount, float specialAttackMana) //Adjusts health/mana on food collection
+    public void GetFood(float healthAmount, float specialAttackMana) //Adjusts health/mana on food collection
     {
         /*
          * Gets automatically called when colliding with food
@@ -97,8 +94,6 @@ public class BasePlayer
         {
             specialAttackBar = 100f;
         }
-        
-        yield return new WaitForFixedUpdate();
     }
 
     

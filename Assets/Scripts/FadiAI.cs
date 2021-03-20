@@ -13,21 +13,44 @@ public class FadiAI : BasePlayer
     {
         while (health > 0f)
         {
-            //Prioritizing enemies over food, that's why I am checking for enemies first
-            if (DetectedEnemies.Count > 0) //If there are detected enemies
+            if (health > 75f)
             {
-                yield return Move(GetClosestEnemy()); //Move to closest enemy
-            }
+                //Prioritizing enemies over food, while health is over 75
+                if (DetectedEnemies.Count > 0) //If there are detected enemies
+                {
+                    yield return Move(GetClosestEnemy()); //Move to closest enemy
+                }
 
-            if (DetectedFood.Count > 0)//If food detected
+                if (DetectedFood.Count > 0) //If food detected
+                {
+                    //Food detected code
+                    yield return Move(GetClosestFood()); //Go to closest food
+                }
+            }
+            else
             {
-                //Food detected code
-                yield return Move(GetClosestFood()); //Go to closest food
+                //If health is lower than 75 only look for food
+                if (DetectedFood.Count > 0)
+                {
+                    yield return Move(GetClosestFood());
+                }
             }
 
             yield return Move(wanderTarget); //If nothing is detected, wander around
         }
         yield return null;
     }
-    
+
+    public override void EnemyInRangeEvent(BasePlayer enemy)
+    {
+        BasicAttack(enemy);
+    }
+
+    public override void ScannedFoodEvent(FoodScanned food)
+    {
+        if (food.Type == favoriteFood)
+        {
+            agent.SetDestination(food.Position);
+        }
+    }
 }
