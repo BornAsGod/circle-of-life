@@ -32,6 +32,7 @@ public class DetectionScript : MonoBehaviour
         scannedEnemy.Distance = Vector3.Distance(transform.root.position, other.transform.position);
         scannedEnemy.Position = other.transform.position;
         scannedEnemy.Object = other.gameObject;
+        scannedEnemy.Health = other.GetComponent<AIController>()._Ai.health;
         AiScript.DetectedEnemies.Add(scannedEnemy);
         AiScript.ScannedEnemyEvent(scannedEnemy); //Call scanned enemy event
     }
@@ -50,6 +51,7 @@ public class DetectionScript : MonoBehaviour
                 return;
             enemy.Position = _position;
             enemy.Distance = Vector3.Distance(transform.root.position, _position);
+            enemy.Health = other.GetComponent<AIController>()._Ai.health;
         }
     }
 

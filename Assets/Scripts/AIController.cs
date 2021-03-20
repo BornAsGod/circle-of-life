@@ -48,7 +48,7 @@ public class AIController : MonoBehaviour
         timer = wanderTimer;
         detect.AiScript = _Ai;
         attack.AiScript = _Ai;
-        _Ai.SetPlayer(agent);
+        _Ai.SetPlayer(agent, favoriteFood);
         StartCoroutine(_Ai.RunAI());
     }
 

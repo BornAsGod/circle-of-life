@@ -12,11 +12,20 @@ public class AttackScript : MonoBehaviour
     
     private void OnTriggerExit(Collider other)
     {
-
+        if (!other.CompareTag("Player"))
+        {
+            return;
+        }
     }
 
     private void OnTriggerStay(Collider other)
     {
+        if (!other.CompareTag("Player"))
+        {
+            return;
+        }
 
+        BasePlayer enemy = other.GetComponent<AIController>()._Ai;
+        AiScript.EnemyInRangeEvent(enemy);
     }
 }
