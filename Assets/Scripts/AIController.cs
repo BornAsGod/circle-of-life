@@ -20,8 +20,8 @@ public class AIController : MonoBehaviour
     [Header("Food")]
     public GameObject favoriteFood = null;
 
-    [SerializeField] private float foodHealing = 15f;
-    [SerializeField] private float favoriteFoodMana = 25f;
+    public static float foodHealing = 15f;
+    public static float favoriteFoodMana = 25f;
 
     //Wandering
     [Header("Wandering")]
