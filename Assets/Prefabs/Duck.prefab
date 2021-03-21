@@ -112,10 +112,9 @@ MonoBehaviour:
   detect: {fileID: 8764005670972091167}
   AiId: 1
   agent: {fileID: 4013435065591491046}
+  _transform: {fileID: 4013435066255940838}
   favoriteFood: {fileID: 1000013051596076, guid: b93286b7dfa93834caec88d1044606c2,
     type: 3}
-  foodHealing: 15
-  favoriteFoodMana: 25
   wanderRadius: 50
   wanderTimer: 10
 --- !u!54 &-7986505989227072145

@@ -30,6 +30,8 @@ public class BasePlayer
     private float basicDamage = 10f; //Basic attack damage
     private float specialAttackBar = 0f; //Mana bar
     public GameObject favoriteFood = null;
+
+    public Transform mTransform = null;
     //Detection and Navigation
     public List<ScannedEnemy> DetectedEnemies = new List<ScannedEnemy>(); //List of detected enemies
     public List<FoodScanned> DetectedFood = new List<FoodScanned>(); //List of detected foods
@@ -37,13 +39,14 @@ public class BasePlayer
     //Wandering
     public Vector3 wanderTarget = Vector3.zero;
 
-    public void SetPlayer(NavMeshAgent _agent, GameObject food) //Gets set in AIController on start
+    public void SetPlayer(NavMeshAgent _agent, GameObject food, Transform transform) //Gets set in AIController on start
     {
         /*
          * Gets called automatically on start to set some of the players properties
          */
         agent = _agent;
         favoriteFood = food;
+        mTransform = transform;
     }
 
     public IEnumerator Move(Vector3 position) //Moves to defined position
