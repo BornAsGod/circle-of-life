@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &125086054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 125086055}
+  - component: {fileID: 125086057}
+  - component: {fileID: 125086056}
+  m_Layer: 13
+  m_Name: FoodCollector
+  m_TagString: Collector
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &125086055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125086054}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5550827986323121947}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &125086057
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125086054}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 4.51
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 4, z: 0}
+--- !u!54 &125086056
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125086054}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1102093940886929261
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,6 +519,7 @@ GameObject:
   - component: {fileID: 5550827986266864275}
   - component: {fileID: 8326300966771306665}
   - component: {fileID: 1141297901639914159}
+  - component: {fileID: 1794126726}
   m_Layer: 8
   m_Name: Penguin
   m_TagString: Player
@@ -482,6 +545,7 @@ Transform:
   - {fileID: 2737303394563239234}
   - {fileID: 594402927798847826}
   - {fileID: 8747559523878737026}
+  - {fileID: 125086055}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -554,17 +618,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07951659c73067947b80568858ac3c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: {fileID: 0}
-  detect: {fileID: 0}
-  AiId: 0
-  agent: {fileID: 0}
-  _transform: {fileID: 0}
-  favoriteFood: {fileID: 0}
-  wanderRadius: 0
-  wanderTimer: 0
+  attack: {fileID: 2283732495646547128}
+  detect: {fileID: 331061280299165012}
+  AiId: 2
+  agent: {fileID: 5550827986266864275}
+  _transform: {fileID: 5550827986323121947}
+  favoriteFood: {fileID: 1000012087637210, guid: cc3c5a058e6bb634781860012b9aa683,
+    type: 3}
+  wanderRadius: 100
+  wanderTimer: 5
   Home: {fileID: 0}
-  ProjectilePrefab: {fileID: 0}
-  ProjectileSpawn: {fileID: 0}
+  ProjectilePrefab: {fileID: 7532958096377329594, guid: c49e4b4bf6168114a95d4419c19e67ac,
+    type: 3}
+  ProjectileSpawn: {fileID: 8747559523878737026}
+--- !u!136 &1794126726
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5550827986322967291}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 3.69
+  m_Height: 12.82
+  m_Direction: 1
+  m_Center: {x: 0, y: 3.95, z: -0.88}
 --- !u!1 &5550827986322967293
 GameObject:
   m_ObjectHideFlags: 0

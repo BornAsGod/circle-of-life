@@ -50,7 +50,8 @@ public class FadiAI : BasePlayer
                 }
             }
 
-            
+            yield return null;
+
         }
         yield return null;
     }
