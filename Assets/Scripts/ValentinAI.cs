@@ -16,8 +16,8 @@ public class ValentinAI : BasePlayer
      * description:
      * 
      * 0.constantly checks: 
-     * -if there is an enemy in range while walking or ideling
-     * -CurrentHelath changes(attacked by other player)
+     * -if there is an enemy in range while walking or idling
+     * -CurrentHealth changes(attacked by other player)
      *  if attacked will fight back to death
      * 
      * 1.Go Home(spawnPoint)   +

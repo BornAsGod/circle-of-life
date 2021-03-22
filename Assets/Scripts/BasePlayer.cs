@@ -30,6 +30,7 @@ public class BasePlayer
     private float basicDamage = 10f; //Basic attack damage
     private float specialAttackBar = 0f; //Mana bar
     public GameObject favoriteFood = null;
+    public Transform mTransform = null;
     //Detection and Navigation
     public List<ScannedEnemy> DetectedEnemies = new List<ScannedEnemy>(); //List of detected enemies
     public List<FoodScanned> DetectedFood = new List<FoodScanned>(); //List of detected foods
@@ -37,13 +38,16 @@ public class BasePlayer
     //Wandering
     public Vector3 wanderTarget = Vector3.zero;
 
-    public void SetPlayer(NavMeshAgent _agent, GameObject food) //Gets set in AIController on start
+    
+    //DO NOT CALL
+    public void SetPlayer(NavMeshAgent _agent, GameObject food, Transform transform) //Gets set in AIController on start
     {
         /*
          * Gets called automatically on start to set some of the players properties
          */
         agent = _agent;
         favoriteFood = food;
+        mTransform = transform;
     }
 
     public IEnumerator Move(Vector3 position) //Moves to defined position
@@ -68,6 +72,8 @@ public class BasePlayer
          */
     }
 
+    
+    //DO NOT CALL
     public void TakeDamage(float damage) //Decrease health when attacked
     {
         /*
@@ -77,6 +83,8 @@ public class BasePlayer
         health -= damage;
     }
 
+    
+    //DO NOT CALL
     public void GetFood(float healthAmount, float specialAttackMana) //Adjusts health/mana on food collection
     {
         /*
@@ -120,7 +128,7 @@ public class BasePlayer
         wanderTarget = target;
     }
 
-    public Vector3 GetClosestEnemy() //Checks for closest enemy in DetectedEnemies list and returns its position
+    public ScannedEnemy GetClosestEnemy() //Checks for closest enemy in DetectedEnemies list and returns its position
     {
         /*
          * Returns the position of the closest enemy
@@ -133,7 +141,7 @@ public class BasePlayer
          */
         if (DetectedEnemies.Count == 1)
         {
-            return DetectedEnemies[0].Position;
+            return DetectedEnemies[0];
         }
 
         float lowestDistance = 1000f;
@@ -146,10 +154,11 @@ public class BasePlayer
                 enemyID = i;
             }
         }
-        return DetectedEnemies[enemyID].Position;
+
+        return DetectedEnemies[enemyID];
     }
     
-    public Vector3 GetClosestFood() //Checks for closest food in DetectedFood list and returns its position
+    public FoodScanned GetClosestFood() //Checks for closest food in DetectedFood list and returns its position
     {
         /*
          * Returns the position of the closest food detected
@@ -161,7 +170,7 @@ public class BasePlayer
          */
         if (DetectedFood.Count == 1)
         {
-            return DetectedFood[0].Position;
+            return DetectedFood[0];
         }
 
         float lowestDistance = 1000f;
@@ -174,7 +183,8 @@ public class BasePlayer
                 foodID = i;
             }
         }
-        return DetectedFood[foodID].Position;
+
+        return DetectedFood[foodID];
     }
     
     //Detection events
@@ -216,7 +226,7 @@ public class BasePlayer
         /*
          * Override in your AI script
          * to attack call:
-         * yield return BasicAttack(enemy);
+         * BasicAttack(enemy);
          */
     }
     

@@ -18,13 +18,19 @@ public class FadiAI : BasePlayer
                 //Prioritizing enemies over food, while health is over 75
                 if (DetectedEnemies.Count > 0) //If there are detected enemies
                 {
-                    yield return Move(GetClosestEnemy()); //Move to closest enemy
+                    if (GetClosestEnemy().Health < 75f)
+                    {
+                        yield return Move(GetClosestEnemy().Position); //Move to closest enemy
+                    }
                 }
 
                 if (DetectedFood.Count > 0) //If food detected
                 {
                     //Food detected code
-                    yield return Move(GetClosestFood()); //Go to closest food
+                    if (GetClosestFood().Type == favoriteFood)
+                    {
+                        yield return Move(GetClosestFood().Position); //Go to closest food
+                    }
                 }
             }
             else
@@ -32,7 +38,8 @@ public class FadiAI : BasePlayer
                 //If health is lower than 75 only look for food
                 if (DetectedFood.Count > 0)
                 {
-                    yield return Move(GetClosestFood());
+                    yield return Move(GetClosestFood().Position);
+
                 }
             }
 
