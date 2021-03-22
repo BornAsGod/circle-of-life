@@ -132,9 +132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 602cdeb2ddc994649acfc6cd46e5a734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAttacking: 0
-  inRange: 0
-  Damage: 0
 --- !u!1 &5550827986322953615
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,6 +481,7 @@ Transform:
   - {fileID: 5550827986323169711}
   - {fileID: 2737303394563239234}
   - {fileID: 594402927798847826}
+  - {fileID: 8747559523878737026}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -560,6 +558,13 @@ MonoBehaviour:
   detect: {fileID: 0}
   AiId: 0
   agent: {fileID: 0}
+  _transform: {fileID: 0}
+  favoriteFood: {fileID: 0}
+  wanderRadius: 0
+  wanderTimer: 0
+  Home: {fileID: 0}
+  ProjectilePrefab: {fileID: 0}
+  ProjectileSpawn: {fileID: 0}
 --- !u!1 &5550827986322967293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1641,3 +1646,33 @@ Transform:
   m_Father: {fileID: 5550827986323121941}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 1.0099437, y: 183.58353, z: 304.74567}
+--- !u!1 &7292293645059321583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8747559523878737026}
+  m_Layer: 8
+  m_Name: ProjectileSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8747559523878737026
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7292293645059321583}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 5.93, z: 4.97}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5550827986323121947}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

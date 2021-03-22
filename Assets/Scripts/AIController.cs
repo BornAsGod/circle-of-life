@@ -44,6 +44,10 @@ public class AIController : MonoBehaviour
             case 1:
                 _Ai = new ValentinAI();
                 break;
+            case 2:
+                _Ai = new StefiAI();
+                break;
+                
         }
     }
     
