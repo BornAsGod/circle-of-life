@@ -32,6 +32,10 @@ public class FadiAI : BasePlayer
                         yield return Move(GetClosestFood().Position); //Go to closest food
                     }
                 }
+                else
+                {
+                    yield return Move(wanderTarget); //If nothing is detected, wander around
+                }
             }
             else
             {
@@ -39,11 +43,14 @@ public class FadiAI : BasePlayer
                 if (DetectedFood.Count > 0)
                 {
                     yield return Move(GetClosestFood().Position);
-
+                }
+                else
+                {
+                    yield return Move(wanderTarget); //If nothing is detected, wander around
                 }
             }
 
-            yield return Move(wanderTarget); //If nothing is detected, wander around
+            
         }
         yield return null;
     }
