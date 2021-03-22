@@ -28,6 +28,10 @@ public class AIController : MonoBehaviour
     [SerializeField] private float wanderRadius;
     [SerializeField] private float wanderTimer;
     private float timer;
+    
+    [Header("Attack")]
+    public GameObject ProjectilePrefab = null;
+    public Transform ProjectileSpawn = null;
 
     private void Awake()
     {
@@ -48,7 +52,7 @@ public class AIController : MonoBehaviour
         timer = wanderTimer;
         detect.AiScript = _Ai;
         attack.AiScript = _Ai;
-        _Ai.SetPlayer(agent, favoriteFood, _transform);
+        _Ai.SetPlayer(this ,agent, favoriteFood, _transform);
         StartCoroutine(_Ai.RunAI());
     }
 
@@ -102,5 +106,11 @@ public class AIController : MonoBehaviour
                 Debug.Log("Removed collected food!");
             }
         }
+    }
+
+    public void SpecialAttack(float damage)
+    {
+        GameObject insProj = Instantiate(ProjectilePrefab, ProjectileSpawn.position, Quaternion.identity);
+        insProj.GetComponent<projectile>().Initialize(ProjectileSpawn.forward, damage);
     }
 }

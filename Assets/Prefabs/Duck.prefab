@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &845946846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 845946847}
+  m_Layer: 8
+  m_Name: ProjectileSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &845946847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845946846}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 6.04, z: 6.29}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4013435066255940838}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4013435066256295942
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,6 +44,7 @@ GameObject:
   - component: {fileID: -3477272583294321986}
   - component: {fileID: 2312484657636443159}
   - component: {fileID: -7986505989227072145}
+  - component: {fileID: 436291366}
   m_Layer: 8
   m_Name: Duck
   m_TagString: Player
@@ -38,6 +69,7 @@ Transform:
   - {fileID: 4009240958556702784}
   - {fileID: 5359008318332365509}
   - {fileID: 6466051390255517832}
+  - {fileID: 845946847}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -117,6 +149,9 @@ MonoBehaviour:
     type: 3}
   wanderRadius: 50
   wanderTimer: 10
+  ProjectilePrefab: {fileID: 7532958096377329594, guid: c49e4b4bf6168114a95d4419c19e67ac,
+    type: 3}
+  ProjectileSpawn: {fileID: 845946847}
 --- !u!54 &-7986505989227072145
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -133,6 +168,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &436291366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4013435066256295942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01b616124e007db429c3ebe33b844438, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectalPrebab: {fileID: 0}
+  shootPos: {fileID: 0}
 --- !u!1 &4013435066256296120
 GameObject:
   m_ObjectHideFlags: 0
@@ -1605,9 +1654,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 602cdeb2ddc994649acfc6cd46e5a734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAttacking: 0
-  inRange: 0
-  Damage: 0
 --- !u!1 &7716009010906859093
 GameObject:
   m_ObjectHideFlags: 0

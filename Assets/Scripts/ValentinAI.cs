@@ -61,14 +61,13 @@ public class ValentinAI : BasePlayer
             {
                 case 0:
                     yield return Move(Home);
-                    if (GameObject.FindGameObjectWithTag("Player").transform.position == Home)
+                    if (mTransform.position == Home)
                     {
                         //Phase++;
-                        
                     }
                     break;
                 case 1:
-                    Vector3 Duck = GameObject.FindGameObjectWithTag("Player").transform.position;
+                    Vector3 Duck = mTransform.position;
                     Vector3 newPos = newPosition();
                     yield return Move(newPos);
 
@@ -79,24 +78,9 @@ public class ValentinAI : BasePlayer
                 default:
                     break;
             }
-
-           
-
+            
         }
         yield return null;
-    }
-    public float wanderRadius = 20f;
-    public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
-    {
-        Vector3 randDirection = Random.insideUnitSphere * dist;
-
-        randDirection += origin;
-
-        NavMeshHit navHit;
-
-        NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
-
-        return navHit.position;
     }
     public static Vector3 newPosition()
     {

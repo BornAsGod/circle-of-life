@@ -48,6 +48,15 @@ public class FadiAI : BasePlayer
         yield return null;
     }
 
+    public override void ScannedEnemyEvent(ScannedEnemy enemy)
+    {
+        if (specialAttackBar == 100)
+        {
+            TurnTowardsPlayer(GetClosestEnemy().Object);
+            SpecialAttack();
+        }
+    }
+
     public override void EnemyInRangeEvent(BasePlayer enemy)
     {
         BasicAttack(enemy);

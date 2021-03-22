@@ -28,7 +28,7 @@ public class BasePlayer
     public float health = 100f; //Player health
     private float specialDamage = 25f; //Special attack damage
     private float basicDamage = 10f; //Basic attack damage
-    private float specialAttackBar = 0f; //Mana bar
+    public float specialAttackBar = 0f; //Mana bar
     public GameObject favoriteFood = null;
     public Transform mTransform = null;
     //Detection and Navigation
@@ -37,10 +37,12 @@ public class BasePlayer
     public NavMeshAgent agent; //Player nav mesh agent
     //Wandering
     public Vector3 wanderTarget = Vector3.zero;
+    public AIController mController = null;
+
 
     
     //DO NOT CALL
-    public void SetPlayer(NavMeshAgent _agent, GameObject food, Transform transform) //Gets set in AIController on start
+    public void SetPlayer(AIController controller, NavMeshAgent _agent, GameObject food, Transform transform) //Gets set in AIController on start
     {
         /*
          * Gets called automatically on start to set some of the players properties
@@ -48,6 +50,7 @@ public class BasePlayer
         agent = _agent;
         favoriteFood = food;
         mTransform = transform;
+        mController = controller;
     }
 
     public IEnumerator Move(Vector3 position) //Moves to defined position
@@ -65,11 +68,16 @@ public class BasePlayer
          */
         enemy.TakeDamage(basicDamage);
     }    
-    public void SpecialAttack(float attackRange) //Special attack projectile
+    public void SpecialAttack() //Special attack projectile
     {
         /*
          * Launches projectile that damages enemy on collision
          */
+        if (specialAttackBar == 100f)
+        {
+            mController.SpecialAttack(specialDamage);
+            specialAttackBar = 0f;
+        }
     }
 
     
@@ -185,6 +193,11 @@ public class BasePlayer
         }
 
         return DetectedFood[foodID];
+    }
+
+    public void TurnTowardsPlayer(GameObject player)
+    {
+        
     }
     
     //Detection events
