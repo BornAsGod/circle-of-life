@@ -22,7 +22,7 @@ public class AttackScript : MonoBehaviour
             return;
         }
 
-        BasePlayer enemy = other.GetComponent<AIController>()._Ai;
-        AiScript.EnemyInRangeEvent(enemy);
+        AIController enemy = other.GetComponent<AIController>();
+        StartCoroutine(enemy._Ai.EnemyInRangeEvent(enemy));
     }
 }

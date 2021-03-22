@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Runtime.InteropServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.PlayerLoop;
@@ -25,7 +26,6 @@ public class FoodScanned //Stores detected food data
 public class BasePlayer
 {
     //Player Attributes
-    public float health = 100f; //Player health
     private float specialDamage = 25f; //Special attack damage
     private float basicDamage = 10f; //Basic attack damage
     public float specialAttackBar = 0f; //Mana bar
@@ -34,24 +34,22 @@ public class BasePlayer
     //Detection and Navigation
     public List<ScannedEnemy> DetectedEnemies = new List<ScannedEnemy>(); //List of detected enemies
     public List<FoodScanned> DetectedFood = new List<FoodScanned>(); //List of detected foods
-    public NavMeshAgent agent; //Player nav mesh agent
     //Wandering
     public Vector3 wanderTarget = Vector3.zero;
-    public AIController mController = null;
+    public AIController Player = null;
     public Transform HomeBiome = null;
 
 
     
     //DO NOT CALL
-    public void SetPlayer(AIController controller, NavMeshAgent _agent, GameObject food, Transform transform, Transform home) //Gets set in AIController on start
+    public void SetPlayer(AIController controller, GameObject food, Transform transform, Transform home) //Gets set in AIController on start
     {
         /*
          * Gets called automatically on start to set some of the players properties
          */
-        agent = _agent;
         favoriteFood = food;
         mTransform = transform;
-        mController = controller;
+        Player = controller;
         HomeBiome = home;
     }
 
@@ -60,10 +58,9 @@ public class BasePlayer
         /*
          * Moves player to entered position
          */
-        agent.destination = position;
-        yield return new WaitForFixedUpdate();
+        yield return Player._Move(position);
     }
-    public void BasicAttack(BasePlayer enemy) //Attacks in range player
+    public void BasicAttack(AIController enemy) //Attacks in range player
     {
         /*
          * Calls TakeDamage on the in-range enemy
@@ -77,22 +74,11 @@ public class BasePlayer
          */
         if (specialAttackBar == 100f)
         {
-            mController.SpecialAttack(specialDamage);
+            Player.SpecialAttack(specialDamage);
             specialAttackBar = 0f;
         }
     }
-
     
-    //DO NOT CALL
-    public void TakeDamage(float damage) //Decrease health when attacked
-    {
-        /*
-         * Gets called automatically on the player taking damage
-         * as a result of BasicAttack call or collision with a special attack projectile
-         */
-        health -= damage;
-    }
-
     
     //DO NOT CALL
     public void GetFood(float healthAmount, float specialAttackMana) //Adjusts health/mana on food collection
@@ -101,17 +87,22 @@ public class BasePlayer
          * Gets automatically called when colliding with food
          * favorite food check is done in AIController, and the right values get added
          */
-        health += healthAmount;
+        Player.Health += healthAmount;
         specialAttackBar += specialAttackMana;
-        if (health > 100f)
+        if (Player.Health > 100f)
         {
-            health = 100f;
+            Player.Health = 100f;
         }
 
         if (specialAttackBar > 100f)
         {
             specialAttackBar = 100f;
         }
+    }
+
+    public IEnumerator DoNothing()
+    {
+        yield return Player._DoNothing();
     }
 
     
@@ -138,7 +129,7 @@ public class BasePlayer
         wanderTarget = target;
     }
 
-    public ScannedEnemy GetClosestEnemy() //Checks for closest enemy in DetectedEnemies list and returns its position
+    protected ScannedEnemy GetClosestEnemy() //Checks for closest enemy in DetectedEnemies list and returns its position
     {
         /*
          * Returns the position of the closest enemy
@@ -167,8 +158,8 @@ public class BasePlayer
 
         return DetectedEnemies[enemyID];
     }
-    
-    public FoodScanned GetClosestFood() //Checks for closest food in DetectedFood list and returns its position
+
+    protected FoodScanned GetClosestFood() //Checks for closest food in DetectedFood list and returns its position
     {
         /*
          * Returns the position of the closest food detected
@@ -207,7 +198,7 @@ public class BasePlayer
     
     //Detection events
 
-    public virtual void ScannedEnemyEvent(ScannedEnemy enemy) //Triggers when an enemy is detected
+    public virtual IEnumerator ScannedEnemyEvent(ScannedEnemy enemy) //Triggers when an enemy is detected
     {
         /*
          * Override in your AI script
@@ -218,9 +209,10 @@ public class BasePlayer
          * Health
          * Check ScannedFoodEvent for examples
          */
+        yield return null;
     }
 
-    public virtual void ScannedFoodEvent(FoodScanned food) //Triggers when food is detected
+    public virtual IEnumerator ScannedFoodEvent(FoodScanned food) //Triggers when food is detected
     {
         /*
          * Override in your AI script
@@ -237,15 +229,17 @@ public class BasePlayer
          * yield return Move(food.Position);
          * }
          */
+        yield return null;
     }
 
-    public virtual void EnemyInRangeEvent(BasePlayer enemy)
+    public virtual IEnumerator EnemyInRangeEvent(AIController enemy)
     {
         /*
          * Override in your AI script
          * to attack call:
          * BasicAttack(enemy);
          */
+        yield return null;
     }
     
 }

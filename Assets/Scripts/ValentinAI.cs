@@ -55,7 +55,7 @@ public class ValentinAI : BasePlayer
 
     public override IEnumerator RunAI()
     {
-        while (health > 0)
+        while (Player.Health > 0)
         {
             switch (Phase)
             {

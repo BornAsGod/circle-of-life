@@ -7,15 +7,17 @@ using UnityEngine.AI;
 using UnityEngine.PlayerLoop;
 using Random = UnityEngine.Random;
 
+[DisallowMultipleComponent]
 public class AIController : MonoBehaviour
 {
+
     [Header("Player Properties")]
     public AttackScript attack;
     public DetectionScript detect;
     public int AiId;
     public BasePlayer _Ai;
-    public NavMeshAgent agent;
-
+    public float Health = 100f;
+    [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Transform _transform;
     //Food
     [Header("Food")]
@@ -31,6 +33,8 @@ public class AIController : MonoBehaviour
     [SerializeField] private Transform Home;
     
     [Header("Attack")]
+    [SerializeField] private float specialDamage = 25f; //Special attack damage
+    [SerializeField] private float basicDamage = 10f; 
     public GameObject ProjectilePrefab = null;
     public Transform ProjectileSpawn = null;
 
@@ -57,7 +61,7 @@ public class AIController : MonoBehaviour
         timer = wanderTimer;
         detect.AiScript = _Ai;
         attack.AiScript = _Ai;
-        _Ai.SetPlayer(this ,agent, favoriteFood, _transform, Home);
+        _Ai.SetPlayer(this , favoriteFood, _transform, Home);
         StartCoroutine(_Ai.RunAI());
     }
 
@@ -84,6 +88,30 @@ public class AIController : MonoBehaviour
  
         return navHit.position;
     }
+
+    public IEnumerator _Move(Vector3 position)
+    {
+        /*
+         * Moves player to set destination
+         */
+        agent.SetDestination(position);
+        yield return new WaitForFixedUpdate();
+    }
+
+    public IEnumerator _DoNothing()
+    {
+        yield return new WaitForFixedUpdate();
+    }
+    
+    public void TakeDamage(float damage) //Decrease health when attacked
+    {
+        /*
+         * Gets called automatically on the player taking damage
+         * as a result of BasicAttack call or collision with a special attack projectile
+         */
+        Health -= damage;
+    }
+    
 
     public void OnFoodCollected(GameObject type)
     {

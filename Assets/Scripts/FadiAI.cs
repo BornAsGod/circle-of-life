@@ -11,17 +11,15 @@ public class FadiAI : BasePlayer
     
     public override IEnumerator RunAI()
     {
-        while (health > 0f)
+        while (Player.Health > 0f)
         {
-            if (health > 75f)
+            if (Player.Health > 75f)
             {
                 //Prioritizing enemies over food, while health is over 75
                 if (DetectedEnemies.Count > 0) //If there are detected enemies
                 {
-                    if (GetClosestEnemy().Health < 75f)
-                    {
-                        yield return Move(GetClosestEnemy().Position); //Move to closest enemy
-                    }
+                    Debug.Log("Attacking!");
+                    yield return Move(GetClosestEnemy().Position); //Move to closest enemy
                 }
 
                 if (DetectedFood.Count > 0) //If food detected
@@ -56,25 +54,48 @@ public class FadiAI : BasePlayer
         yield return null;
     }
 
-    public override void ScannedEnemyEvent(ScannedEnemy enemy)
+    public override IEnumerator ScannedEnemyEvent(ScannedEnemy enemy)
     {
-        if (specialAttackBar == 100)
+        if (specialAttackBar < 100f)
         {
-            TurnTowardsPlayer(GetClosestEnemy().Object);
+            if (Player.Health > 70f)
+            {
+                yield return Move(enemy.Position);
+            }
+            else
+            {
+                yield return Move(wanderTarget);
+            }
+        }
+        else
+        {
+            TurnTowardsPlayer(enemy.Object);
             SpecialAttack();
+        }
+
+        yield return null;
+    }
+
+    public override IEnumerator EnemyInRangeEvent(AIController enemy)
+    {
+        if (Player.Health > 50f)
+        {
+            BasicAttack(enemy);
+            yield return DoNothing();
+        }
+        else
+        {
+            yield return Move(wanderTarget);
         }
     }
 
-    public override void EnemyInRangeEvent(BasePlayer enemy)
-    {
-        BasicAttack(enemy);
-    }
-
-    public override void ScannedFoodEvent(FoodScanned food)
+    public override IEnumerator ScannedFoodEvent(FoodScanned food)
     {
         if (food.Type == favoriteFood)
         {
-            agent.SetDestination(food.Position);
+            yield return Move(food.Position);
         }
+
+        yield return DoNothing();
     }
 }

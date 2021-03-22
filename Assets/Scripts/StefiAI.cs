@@ -6,11 +6,11 @@ public class StefiAI : BasePlayer
 {
     public override IEnumerator RunAI()
     {
-        while (health > 0f)
+        while (Player.Health > 0f)
         {
-            switch (health)
+            switch (Player.Health)
             {
-                case float _ when (health > 75f):
+                case float _ when (Player.Health > 75f):
                     
                     if (DetectedEnemies.Count == 1)
                     {
@@ -59,8 +59,9 @@ public class StefiAI : BasePlayer
         }
     }
 
-    public override void EnemyInRangeEvent(BasePlayer enemy)
+    public override IEnumerator EnemyInRangeEvent(AIController enemy)
     {
         BasicAttack(enemy);
+        yield return null;
     }
 }

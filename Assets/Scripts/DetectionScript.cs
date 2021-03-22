@@ -23,7 +23,7 @@ public class DetectionScript : MonoBehaviour
             scannedFood.Type = other.gameObject;
             scannedFood.Position = other.transform.position;
             AiScript.DetectedFood.Add(scannedFood);
-            AiScript.ScannedFoodEvent(scannedFood); //Call scanned food event
+            StartCoroutine(AiScript.ScannedFoodEvent(scannedFood)); //Call scanned food event
             return;
         }
         //Add enemy data to list
@@ -32,9 +32,9 @@ public class DetectionScript : MonoBehaviour
         scannedEnemy.Distance = Vector3.Distance(transform.root.position, other.transform.position);
         scannedEnemy.Position = other.transform.position;
         scannedEnemy.Object = other.gameObject;
-        scannedEnemy.Health = other.GetComponent<AIController>()._Ai.health;
+        scannedEnemy.Health = other.GetComponent<AIController>().Health;
         AiScript.DetectedEnemies.Add(scannedEnemy);
-        AiScript.ScannedEnemyEvent(scannedEnemy); //Call scanned enemy event
+        StartCoroutine(AiScript.ScannedEnemyEvent(scannedEnemy)); //Call scanned enemy event
     }
 
     private void OnTriggerStay(Collider other)
@@ -51,7 +51,7 @@ public class DetectionScript : MonoBehaviour
                 return;
             enemy.Position = _position;
             enemy.Distance = Vector3.Distance(transform.root.position, _position);
-            enemy.Health = other.GetComponent<AIController>()._Ai.health;
+            enemy.Health = other.GetComponent<AIController>().Health;
         }
     }
 
