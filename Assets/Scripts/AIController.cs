@@ -28,6 +28,7 @@ public class AIController : MonoBehaviour
     [SerializeField] private float wanderRadius;
     [SerializeField] private float wanderTimer;
     private float timer;
+    [SerializeField] private Transform Home;
     
     [Header("Attack")]
     public GameObject ProjectilePrefab = null;
@@ -52,7 +53,7 @@ public class AIController : MonoBehaviour
         timer = wanderTimer;
         detect.AiScript = _Ai;
         attack.AiScript = _Ai;
-        _Ai.SetPlayer(this ,agent, favoriteFood, _transform);
+        _Ai.SetPlayer(this ,agent, favoriteFood, _transform, Home);
         StartCoroutine(_Ai.RunAI());
     }
 

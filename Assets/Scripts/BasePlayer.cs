@@ -38,11 +38,12 @@ public class BasePlayer
     //Wandering
     public Vector3 wanderTarget = Vector3.zero;
     public AIController mController = null;
+    public Transform HomeBiome = null;
 
 
     
     //DO NOT CALL
-    public void SetPlayer(AIController controller, NavMeshAgent _agent, GameObject food, Transform transform) //Gets set in AIController on start
+    public void SetPlayer(AIController controller, NavMeshAgent _agent, GameObject food, Transform transform, Transform home) //Gets set in AIController on start
     {
         /*
          * Gets called automatically on start to set some of the players properties
@@ -51,6 +52,7 @@ public class BasePlayer
         favoriteFood = food;
         mTransform = transform;
         mController = controller;
+        HomeBiome = home;
     }
 
     public IEnumerator Move(Vector3 position) //Moves to defined position
@@ -197,7 +199,10 @@ public class BasePlayer
 
     public void TurnTowardsPlayer(GameObject player)
     {
-        
+        float rotationSpeed = 10f;
+        Vector3 targetDirection = (player.transform.position - mTransform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(targetDirection);
+        mTransform.rotation = Quaternion.Slerp(mTransform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
     }
     
     //Detection events

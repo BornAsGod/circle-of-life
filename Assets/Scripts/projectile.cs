@@ -7,16 +7,16 @@ public class projectile : MonoBehaviour
 {
     Rigidbody rb;
 
-    public float AliveTime = 3;
-    public float Radius = 2;
+    public float AliveTime = 3f;
+    public float Radius = 2f;
     public float speed = 100f;
     private float damage;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        Invoke("EnableColider", 0.2f);
-        Invoke("Destroy", 2f);
+        Invoke("EnableCollider", 0.2f);
+        Invoke("Destroy", AliveTime);
     }
     
     public void Initialize(Vector3 face, float _damage)
@@ -24,7 +24,7 @@ public class projectile : MonoBehaviour
         damage = _damage;
         rb.AddForce(face * speed, ForceMode.Impulse);
     }
-    void EnableColider()
+    void EnableCollider()
     {
         GetComponent<Collider>().enabled = true;
     }
@@ -41,5 +41,6 @@ public class projectile : MonoBehaviour
         }
         
         other.gameObject.GetComponent<AIController>()._Ai.TakeDamage(damage);
+        Destroy(this);
     }
 }
