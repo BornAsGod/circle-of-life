@@ -63,7 +63,8 @@ public class ValentinAI : BasePlayer
                     yield return Move(Home);
                     if (GameObject.FindGameObjectWithTag("Player").transform.position == Home)
                     {
-                        Phase++;
+                        //Phase++;
+                        
                     }
                     break;
                 case 1:
