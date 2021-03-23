@@ -14,7 +14,7 @@ public class StefiAI : BasePlayer
                     
                     if (DetectedEnemies.Count == 1)
                     {
-                        if (specialAttackBar == 100f)
+                        if (Player.specialAttackBar == 100f)
                         {
                             SpecialAttack();
                             yield return null;
@@ -26,9 +26,10 @@ public class StefiAI : BasePlayer
                     }
                     else if (DetectedEnemies.Count > 1)
                     {
-                        if (specialAttackBar == 100f)
+                        if (Player.specialAttackBar == 100f)
                         {
                             SpecialAttack();
+                            yield return null;
                         }
                         else
                         {
@@ -41,18 +42,52 @@ public class StefiAI : BasePlayer
                         yield return Move(GetClosestFood().Position);
                     }
 
+                    yield return Move(wanderTarget);
+
                     break;
                 
-                // case float _ when (health > 50f):
-                //     
-                //     break;
-                //
-                // case float _ when (health < 50f):
-                //     
-                //     break;
+                case float _ when (Player.Health > 50f):
+
+                    if (DetectedFood.Count > 0)
+                    {
+                        yield return Move(GetClosestFood().Position);
+                    }
+
+                    if (DetectedEnemies.Count > 0)
+                    {
+                        if (Player.specialAttackBar == 100f)
+                        {
+                            SpecialAttack();
+                            yield return null;
+                        }
+                        else
+                        {
+                            yield return Move(GetClosestEnemy().Position + new Vector3(20f, 0f, 20f));
+                        }
+                    }
+                    
+                    yield return Move(wanderTarget);
+                    
+                    break;
+                
+                case float _ when (Player.Health < 50f):
+
+                    yield return Move(Player.Home.position);
+
+                    if (DetectedFood.Count > 0)
+                    {
+                        foreach (var food in DetectedFood)
+                        {
+                            yield return Move(food.Position);
+                        }
+                    }
+                    
+                    break;
                 
                 default:
 
+                    yield return Move(wanderTarget);
+                    
                     break;
             }
             yield return Move(wanderTarget);
@@ -62,6 +97,16 @@ public class StefiAI : BasePlayer
     public override IEnumerator EnemyInRangeEvent(AIController enemy)
     {
         BasicAttack(enemy);
+        yield return null;
+    }
+
+    public override IEnumerator ScannedFoodEvent(FoodScanned food)
+    {
+        if (food.Type == Player.favoriteFood)
+        {
+            yield return Move(food.Position);
+        }
+
         yield return null;
     }
 }
