@@ -19,14 +19,12 @@ public class AIController : MonoBehaviour
     public float Health = 100f;
     public float specialAttackBar = 0f; //Mana bar
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private Transform _transform;
-    //Food
+    
     [Header("Food")]
     public GameObject favoriteFood = null;
     public static float foodHealing = 15f;
     public static float favoriteFoodMana = 25f;
-
-    //Wandering
+    
     [Header("Wandering")]
     [SerializeField] private float wanderRadius;
     [SerializeField] private float wanderTimer;
@@ -34,8 +32,8 @@ public class AIController : MonoBehaviour
     public Transform Home;
     
     [Header("Attack")]
-    [SerializeField] private float specialDamage = 25f; //Special attack damage
-    [SerializeField] private float basicDamage = 10f; 
+    public float specialDamage = 25f; //Special attack damage
+    public float basicDamage = 10f; 
     public GameObject ProjectilePrefab = null;
     public Transform ProjectileSpawn = null;
 
@@ -56,7 +54,6 @@ public class AIController : MonoBehaviour
         }
     }
     
-
     private void Start()
     {
         timer = wanderTimer;
@@ -145,5 +142,10 @@ public class AIController : MonoBehaviour
     {
         GameObject insProj = Instantiate(ProjectilePrefab, ProjectileSpawn.position, Quaternion.identity);
         insProj.GetComponent<projectile>().Initialize(ProjectileSpawn.forward, damage);
+    }
+
+    public void RunGame()
+    {
+        StartCoroutine(_Ai.RunAI());
     }
 }

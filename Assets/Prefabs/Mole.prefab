@@ -66,6 +66,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fc4c5f197bb835459be871342ef425f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &740426862169192111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3271068455492048613}
+  m_Layer: 8
+  m_Name: ProjectileSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3271068455492048613
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740426862169192111}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 7.77, z: 6.97}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6660158349441921020}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &894089943394277400
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,9 +162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 602cdeb2ddc994649acfc6cd46e5a734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAttacking: 0
-  inRange: 0
-  Damage: 0
 --- !u!1 &6660158349441520710
 GameObject:
   m_ObjectHideFlags: 0
@@ -4885,6 +4912,7 @@ Transform:
   - {fileID: 6660158349442007462}
   - {fileID: 4183554577018966823}
   - {fileID: 9072158315775467206}
+  - {fileID: 3271068455492048613}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4957,10 +4985,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07951659c73067947b80568858ac3c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: {fileID: 0}
-  detect: {fileID: 0}
-  AiId: 0
-  agent: {fileID: 0}
+  attack: {fileID: 1059346089715584980}
+  detect: {fileID: 2825952856750385810}
+  AiId: 1
+  Health: 100
+  specialAttackBar: 0
+  agent: {fileID: 6660158348955036143}
+  favoriteFood: {fileID: 1000011395917184, guid: 630adda25e718324a80512d3e4d69e13,
+    type: 3}
+  wanderRadius: 150
+  wanderTimer: 5
+  Home: {fileID: 0}
+  specialDamage: 25
+  basicDamage: 10
+  ProjectilePrefab: {fileID: 7532958096377329594, guid: c49e4b4bf6168114a95d4419c19e67ac,
+    type: 3}
+  ProjectileSpawn: {fileID: 3271068455492048613}
 --- !u!1 &6660158349441692574
 GameObject:
   m_ObjectHideFlags: 0

@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: -3477272583294321986}
   - component: {fileID: 2312484657636443159}
   - component: {fileID: -7986505989227072145}
-  - component: {fileID: 436291366}
   m_Layer: 8
   m_Name: Duck
   m_TagString: Player
@@ -143,12 +142,16 @@ MonoBehaviour:
   attack: {fileID: 6478835412593082375}
   detect: {fileID: 8764005670972091167}
   AiId: 1
+  Health: 100
+  specialAttackBar: 0
   agent: {fileID: 4013435065591491046}
-  _transform: {fileID: 4013435066255940838}
   favoriteFood: {fileID: 1000013051596076, guid: b93286b7dfa93834caec88d1044606c2,
     type: 3}
   wanderRadius: 50
   wanderTimer: 10
+  Home: {fileID: 0}
+  specialDamage: 25
+  basicDamage: 10
   ProjectilePrefab: {fileID: 7532958096377329594, guid: c49e4b4bf6168114a95d4419c19e67ac,
     type: 3}
   ProjectileSpawn: {fileID: 845946847}
@@ -168,20 +171,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &436291366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4013435066256295942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01b616124e007db429c3ebe33b844438, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectalPrebab: {fileID: 0}
-  shootPos: {fileID: 0}
 --- !u!1 &4013435066256296120
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,23 +25,19 @@ public class FoodScanned //Stores detected food data
 }
 public class BasePlayer
 {
-    //Player Attributes
-    private float specialDamage = 25f; //Special attack damage
-    private float basicDamage = 10f; //Basic attack damage
+    public AIController Player = null;
     //Detection and Navigation
     public List<ScannedEnemy> DetectedEnemies = new List<ScannedEnemy>(); //List of detected enemies
     public List<FoodScanned> DetectedFood = new List<FoodScanned>(); //List of detected foods
     //Wandering
     public Vector3 wanderTarget = Vector3.zero;
-    public AIController Player = null;
 
-
-
+    
     //DO NOT CALL
     public void SetPlayer(AIController controller) //Gets set in AIController on start
     {
         /*
-         * Gets called automatically on start to set some of the players properties
+         * Gets reference to the AIController
          */
         Player = controller;
     }
@@ -58,7 +54,7 @@ public class BasePlayer
         /*
          * Calls TakeDamage on the in-range enemy
          */
-        enemy.TakeDamage(basicDamage);
+        enemy.TakeDamage(Player.basicDamage);
     }    
     public void SpecialAttack() //Special attack projectile
     {
@@ -67,7 +63,7 @@ public class BasePlayer
          */
         if (Player.specialAttackBar == 100f)
         {
-            Player.SpecialAttack(specialDamage);
+            Player.SpecialAttack(Player.specialDamage);
             Player.specialAttackBar = 0f;
         }
     }

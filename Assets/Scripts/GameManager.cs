@@ -7,9 +7,10 @@ public class GameManager : MonoBehaviour
 {
     [Header("Prefabs")] 
     public GameObject[] playerPrefabs = new GameObject[5];
-
-
+    
     [Header("Spawnpoints")] public Transform[] spawnPoints = new Transform[5];
+
+    private List<AIController> players = new List<AIController>();
 
     private void Start()
     {
@@ -17,7 +18,19 @@ public class GameManager : MonoBehaviour
         {
             GameObject player = Instantiate(playerPrefabs[i], spawnPoints[i].position, spawnPoints[i].rotation);
             AIController _ai = player.GetComponent<AIController>();
+            players.Add(_ai);
             _ai.Home = spawnPoints[i];
         }
+    }
+
+    private void Update()
+    {
+       if(Input.GetKeyDown(KeyCode.Space))
+       {
+           foreach (var player in players)
+           {
+               player.RunGame();
+           } 
+       }
     }
 }
