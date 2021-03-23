@@ -1141,16 +1141,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07951659c73067947b80568858ac3c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: {fileID: 0}
-  detect: {fileID: 0}
-  AiId: 1
+  attack: {fileID: 858074796962444082}
+  detect: {fileID: 7463520400662986781}
+  AiId: 2
   Health: 100
   specialAttackBar: 0
   agent: {fileID: 7635323702083613286}
   favoriteFood: {fileID: 1000011216760202, guid: 78a6a596f3cdc2641b44bb3d371c8db0,
     type: 3}
-  wanderRadius: 150
-  wanderTimer: 5
+  wanderRadius: 400
+  wanderTimer: 10
   Home: {fileID: 0}
   specialDamage: 25
   basicDamage: 10

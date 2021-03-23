@@ -141,13 +141,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: {fileID: 6478835412593082375}
   detect: {fileID: 8764005670972091167}
-  AiId: 1
+  AiId: 0
   Health: 100
   specialAttackBar: 0
   agent: {fileID: 4013435065591491046}
   favoriteFood: {fileID: 1000013051596076, guid: b93286b7dfa93834caec88d1044606c2,
     type: 3}
-  wanderRadius: 50
+  wanderRadius: 400
   wanderTimer: 10
   Home: {fileID: 0}
   specialDamage: 25

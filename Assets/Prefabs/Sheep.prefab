@@ -818,8 +818,8 @@ MonoBehaviour:
   agent: {fileID: 377438618466379202}
   favoriteFood: {fileID: 1035722276800794070, guid: 686fd732b387dd74ca5d8237c95e9eff,
     type: 3}
-  wanderRadius: 150
-  wanderTimer: 5
+  wanderRadius: 400
+  wanderTimer: 10
   Home: {fileID: 0}
   specialDamage: 25
   basicDamage: 10
@@ -852,10 +852,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 3.69
+  m_Radius: 5.11
   m_Height: 12.82
   m_Direction: 1
-  m_Center: {x: 0, y: 3.95, z: 0}
+  m_Center: {x: 0, y: 3.95, z: -0.82}
 --- !u!1 &377438616713704563
 GameObject:
   m_ObjectHideFlags: 0

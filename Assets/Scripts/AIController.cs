@@ -100,16 +100,6 @@ public class AIController : MonoBehaviour
         yield return new WaitForFixedUpdate();
     }
     
-    public void TakeDamage(float damage) //Decrease health when attacked
-    {
-        /*
-         * Gets called automatically on the player taking damage
-         * as a result of BasicAttack call or collision with a special attack projectile
-         */
-        Health -= damage;
-    }
-    
-
     public void OnFoodCollected(GameObject type)
     {
         
@@ -117,12 +107,13 @@ public class AIController : MonoBehaviour
 
         if (type == favoriteFood)
         {
-            _Ai.GetFood(foodHealing, favoriteFoodMana);
+            Debug.Log("Favorite food detected!");
+            GetFood(foodHealing, favoriteFoodMana);
             UpdateFoodList(type);
             return;
         }
 
-        _Ai.GetFood(foodHealing, 0f);
+        GetFood(foodHealing, 0f);
         UpdateFoodList(type);
     }
 
@@ -147,5 +138,25 @@ public class AIController : MonoBehaviour
     public void RunGame()
     {
         StartCoroutine(_Ai.RunAI());
+    }
+    
+    //DO NOT CALL
+    public void GetFood(float healthAmount, float specialAttackMana) //Adjusts health/mana on food collection
+    {
+        /*
+         * Gets automatically called when colliding with food
+         * favorite food check is done in AIController, and the right values get added
+         */
+        Health += healthAmount;
+        specialAttackBar += specialAttackMana;
+        if (Health > 100f)
+        {
+            Health = 100f;
+        }
+
+        if (specialAttackBar > 100f)
+        {
+            specialAttackBar = 100f;
+        }
     }
 }

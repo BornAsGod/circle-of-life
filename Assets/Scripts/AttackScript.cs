@@ -23,6 +23,6 @@ public class AttackScript : MonoBehaviour
         }
 
         AIController enemy = other.GetComponent<AIController>();
-        StartCoroutine(enemy._Ai.EnemyInRangeEvent(enemy));
+        StartCoroutine(AiScript.EnemyInRangeEvent(enemy));
     }
 }

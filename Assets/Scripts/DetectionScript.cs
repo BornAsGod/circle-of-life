@@ -7,7 +7,14 @@ using UnityEngine;
 public class DetectionScript : MonoBehaviour
 {
     public BasePlayer AiScript;
-    
+
+    private GameManager _gameManager = null;
+
+    private void Awake()
+    {
+        _gameManager = FindObjectOfType<GameManager>();
+    }
+
     private void OnTriggerEnter(Collider other) 
     {
         if (!other.CompareTag("Player"))
@@ -23,7 +30,10 @@ public class DetectionScript : MonoBehaviour
             scannedFood.Type = other.gameObject;
             scannedFood.Position = other.transform.position;
             AiScript.DetectedFood.Add(scannedFood);
-            StartCoroutine(AiScript.ScannedFoodEvent(scannedFood)); //Call scanned food event
+            if (_gameManager.isGameStarted)
+            {
+                StartCoroutine(AiScript.ScannedFoodEvent(scannedFood)); //Call scanned food event
+            }
             return;
         }
         //Add enemy data to list
@@ -34,7 +44,10 @@ public class DetectionScript : MonoBehaviour
         scannedEnemy.Object = other.gameObject;
         scannedEnemy.Health = other.GetComponent<AIController>().Health;
         AiScript.DetectedEnemies.Add(scannedEnemy);
-        StartCoroutine(AiScript.ScannedEnemyEvent(scannedEnemy)); //Call scanned enemy event
+        if (_gameManager.isGameStarted)
+        {
+            StartCoroutine(AiScript.ScannedEnemyEvent(scannedEnemy)); //Call scanned enemy event
+        }
     }
 
     private void OnTriggerStay(Collider other)

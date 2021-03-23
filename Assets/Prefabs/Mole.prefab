@@ -4987,14 +4987,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: {fileID: 1059346089715584980}
   detect: {fileID: 2825952856750385810}
-  AiId: 1
+  AiId: 2
   Health: 100
   specialAttackBar: 0
   agent: {fileID: 6660158348955036143}
   favoriteFood: {fileID: 1000011395917184, guid: 630adda25e718324a80512d3e4d69e13,
     type: 3}
-  wanderRadius: 150
-  wanderTimer: 5
+  wanderRadius: 400
+  wanderTimer: 10
   Home: {fileID: 0}
   specialDamage: 25
   basicDamage: 10

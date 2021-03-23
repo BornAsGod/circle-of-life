@@ -54,7 +54,7 @@ public class BasePlayer
         /*
          * Calls TakeDamage on the in-range enemy
          */
-        enemy.TakeDamage(Player.basicDamage);
+        enemy.Health -= Player.basicDamage;
     }    
     public void SpecialAttack() //Special attack projectile
     {
@@ -69,26 +69,6 @@ public class BasePlayer
     }
     
     
-    //DO NOT CALL
-    public void GetFood(float healthAmount, float specialAttackMana) //Adjusts health/mana on food collection
-    {
-        /*
-         * Gets automatically called when colliding with food
-         * favorite food check is done in AIController, and the right values get added
-         */
-        Player.Health += healthAmount;
-        Player.specialAttackBar += specialAttackMana;
-        if (Player.Health > 100f)
-        {
-            Player.Health = 100f;
-        }
-
-        if (Player.specialAttackBar > 100f)
-        {
-            Player.specialAttackBar = 100f;
-        }
-    }
-
     public IEnumerator DoNothing()
     {
         yield return Player._DoNothing();

@@ -7,6 +7,8 @@ public class foodSpawner : MonoBehaviour
 
     public GameObject Food;
 
+    public GameManager _GameManager;
+
     public Transform Mid;
     public Transform grass;
     public Transform sand;
@@ -38,7 +40,10 @@ public class foodSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SpawningFoodGrass();
+        if (_GameManager.isGameStarted)
+        {
+            SpawningFoodGrass();
+        }
     }
     public void SpawningFoodMid()
     {

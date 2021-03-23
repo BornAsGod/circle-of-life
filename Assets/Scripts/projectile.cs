@@ -39,8 +39,8 @@ public class projectile : MonoBehaviour
         {
             return;
         }
-        
-        other.gameObject.GetComponent<AIController>().TakeDamage(damage);
+
+        other.gameObject.GetComponent<AIController>().Health -= damage;
         Destroy(this);
     }
 }

@@ -20,13 +20,14 @@ public class FadiAI : BasePlayer
                 {
                     Debug.Log("Attacking!");
                     yield return Move(GetClosestEnemy().Position); //Move to closest enemy
-                }
+                } else
 
                 if (DetectedFood.Count > 0) //If food detected
                 {
                     //Food detected code
                     if (GetClosestFood().Type == Player.favoriteFood)
                     {
+                        Debug.Log("Getting food!");
                         yield return Move(GetClosestFood().Position); //Go to closest food
                     }
                 }

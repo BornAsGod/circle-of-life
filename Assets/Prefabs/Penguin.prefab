@@ -42,10 +42,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 4.51
+  m_Radius: 4.27
   m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 4, z: 0}
+  m_Center: {x: 0, y: 4, z: -0.48}
 --- !u!54 &125086056
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -115,7 +115,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0.05}
 --- !u!114 &331061280299165012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +181,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0.05}
 --- !u!114 &2283732495646547128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,8 +626,8 @@ MonoBehaviour:
   agent: {fileID: 5550827986266864275}
   favoriteFood: {fileID: 1000012087637210, guid: cc3c5a058e6bb634781860012b9aa683,
     type: 3}
-  wanderRadius: 100
-  wanderTimer: 5
+  wanderRadius: 400
+  wanderTimer: 10
   Home: {fileID: 0}
   specialDamage: 25
   basicDamage: 10
