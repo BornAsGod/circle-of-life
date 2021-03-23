@@ -61,13 +61,13 @@ public class ValentinAI : BasePlayer
             {
                 case 0:
                     yield return Move(Home);
-                    if (mTransform.position == Home)
+                    if (Player.transform.position == Home)
                     {
                         //Phase++;
                     }
                     break;
                 case 1:
-                    Vector3 Duck = mTransform.position;
+                    Vector3 Duck = Player.transform.position;
                     Vector3 newPos = newPosition();
                     yield return Move(newPos);
 

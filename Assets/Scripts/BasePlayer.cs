@@ -28,29 +28,22 @@ public class BasePlayer
     //Player Attributes
     private float specialDamage = 25f; //Special attack damage
     private float basicDamage = 10f; //Basic attack damage
-    public float specialAttackBar = 0f; //Mana bar
-    public GameObject favoriteFood = null;
-    public Transform mTransform = null;
     //Detection and Navigation
     public List<ScannedEnemy> DetectedEnemies = new List<ScannedEnemy>(); //List of detected enemies
     public List<FoodScanned> DetectedFood = new List<FoodScanned>(); //List of detected foods
     //Wandering
     public Vector3 wanderTarget = Vector3.zero;
     public AIController Player = null;
-    public Transform HomeBiome = null;
 
 
-    
+
     //DO NOT CALL
-    public void SetPlayer(AIController controller, GameObject food, Transform transform, Transform home) //Gets set in AIController on start
+    public void SetPlayer(AIController controller) //Gets set in AIController on start
     {
         /*
          * Gets called automatically on start to set some of the players properties
          */
-        favoriteFood = food;
-        mTransform = transform;
         Player = controller;
-        HomeBiome = home;
     }
 
     public IEnumerator Move(Vector3 position) //Moves to defined position
@@ -72,10 +65,10 @@ public class BasePlayer
         /*
          * Launches projectile that damages enemy on collision
          */
-        if (specialAttackBar == 100f)
+        if (Player.specialAttackBar == 100f)
         {
             Player.SpecialAttack(specialDamage);
-            specialAttackBar = 0f;
+            Player.specialAttackBar = 0f;
         }
     }
     
@@ -88,15 +81,15 @@ public class BasePlayer
          * favorite food check is done in AIController, and the right values get added
          */
         Player.Health += healthAmount;
-        specialAttackBar += specialAttackMana;
+        Player.specialAttackBar += specialAttackMana;
         if (Player.Health > 100f)
         {
             Player.Health = 100f;
         }
 
-        if (specialAttackBar > 100f)
+        if (Player.specialAttackBar > 100f)
         {
-            specialAttackBar = 100f;
+            Player.specialAttackBar = 100f;
         }
     }
 
@@ -191,9 +184,9 @@ public class BasePlayer
     public void TurnTowardsPlayer(GameObject player)
     {
         float rotationSpeed = 10f;
-        Vector3 targetDirection = (player.transform.position - mTransform.position).normalized;
+        Vector3 targetDirection = (player.transform.position - Player.transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(targetDirection);
-        mTransform.rotation = Quaternion.Slerp(mTransform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+        Player.transform.rotation = Quaternion.Slerp(Player.transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
     }
     
     //Detection events

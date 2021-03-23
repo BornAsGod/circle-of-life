@@ -17,6 +17,7 @@ public class AIController : MonoBehaviour
     public int AiId;
     public BasePlayer _Ai;
     public float Health = 100f;
+    public float specialAttackBar = 0f; //Mana bar
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Transform _transform;
     //Food
@@ -30,7 +31,7 @@ public class AIController : MonoBehaviour
     [SerializeField] private float wanderRadius;
     [SerializeField] private float wanderTimer;
     private float timer;
-    [SerializeField] private Transform Home;
+    public Transform Home;
     
     [Header("Attack")]
     [SerializeField] private float specialDamage = 25f; //Special attack damage
@@ -61,8 +62,7 @@ public class AIController : MonoBehaviour
         timer = wanderTimer;
         detect.AiScript = _Ai;
         attack.AiScript = _Ai;
-        _Ai.SetPlayer(this , favoriteFood, _transform, Home);
-        StartCoroutine(_Ai.RunAI());
+        _Ai.SetPlayer(this);
     }
 
     private void Update()

@@ -813,6 +813,7 @@ MonoBehaviour:
   attack: {fileID: 5304755114234501464}
   detect: {fileID: 3371439693189877183}
   AiId: 0
+  Health: 100
   agent: {fileID: 377438618466379202}
   _transform: {fileID: 377438616713666641}
   favoriteFood: {fileID: 1035722276800794070, guid: 686fd732b387dd74ca5d8237c95e9eff,
@@ -820,6 +821,8 @@ MonoBehaviour:
   wanderRadius: 150
   wanderTimer: 5
   Home: {fileID: 0}
+  specialDamage: 25
+  basicDamage: 10
   ProjectilePrefab: {fileID: 7532958096377329594, guid: c49e4b4bf6168114a95d4419c19e67ac,
     type: 3}
   ProjectileSpawn: {fileID: 7441231019423678384}
