@@ -16,18 +16,18 @@ public class FadiAI : BasePlayer
             if (Player.Health > 75f)
             {
                 //Prioritizing enemies over food, while health is over 75
-                if (DetectedEnemies.Count > 0) //If there are detected enemies
+                if (DetectedEnemies.Count > 1) //If there are detected enemies
                 {
                     Debug.Log("Attacking!");
                     yield return Move(GetClosestEnemy().Position); //Move to closest enemy
                 } else
 
-                if (DetectedFood.Count > 0) //If food detected
+                if (DetectedFood.Count > 1) //If food detected
                 {
                     //Food detected code
-                    if (GetClosestFood().Type == Player.favoriteFood)
+                    if (GetClosestFood().Type == Player.FavoriteFood)
                     {
-                        Debug.Log("Getting food!");
+                        Debug.Log("Getting favorite food!");
                         yield return Move(GetClosestFood().Position); //Go to closest food
                     }
                 }
@@ -39,7 +39,7 @@ public class FadiAI : BasePlayer
             else
             {
                 //If health is lower than 75 only look for food
-                if (DetectedFood.Count > 0)
+                if (DetectedFood.Count > 1)
                 {
                     yield return Move(GetClosestFood().Position);
                 }
@@ -93,13 +93,20 @@ public class FadiAI : BasePlayer
     public override IEnumerator ScannedFoodEvent(FoodScanned food)
     {
         Debug.Log("Food Event Triggered!");
-        if (food.Type == Player.favoriteFood)
+        if (Player.Health <= 50f)
         {
             yield return Move(food.Position);
         }
         else
         {
-            yield return Move(wanderTarget);
+            if (food.Type == Player.FavoriteFood)
+            {
+                yield return Move(food.Position);
+            }
+            else
+            {
+                yield return Move(wanderTarget);
+            }
         }
     }
 }

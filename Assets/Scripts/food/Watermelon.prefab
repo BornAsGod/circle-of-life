@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6627515704079483642}
   - component: {fileID: 5163218887892315396}
   - component: {fileID: 1422158429017397352}
-  m_Layer: 12
+  m_Layer: 17
   m_Name: Watermelon
   m_TagString: Food
   m_Icon: {fileID: 0}

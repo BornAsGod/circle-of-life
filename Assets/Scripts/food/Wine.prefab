@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8383726450856706499}
   - component: {fileID: -1217613044557453276}
   - component: {fileID: -4701513944898488988}
-  m_Layer: 12
+  m_Layer: 18
   m_Name: Wine
   m_TagString: Food
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000013191416304, guid: c48a3ebf277ae9f46bc06489f5850636, type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4000013841711868, guid: c48a3ebf277ae9f46bc06489f5850636, type: 3}
       propertyPath: m_RootOrder

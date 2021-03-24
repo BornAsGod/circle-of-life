@@ -21,9 +21,9 @@ public class AIController : MonoBehaviour
     public float Health = 100f;
     public float specialAttackBar = 0f; //Mana bar
     [SerializeField] private NavMeshAgent agent;
-    
-    [Header("Food")]
-    public GameObject favoriteFood = null;
+
+    [Header("Food")] 
+    public int FavoriteFood;
     public static float foodHealing = 15f;
     public static float favoriteFoodMana = 25f;
     
@@ -118,7 +118,7 @@ public class AIController : MonoBehaviour
         
         Debug.Log("Food collected!");
 
-        if (type == favoriteFood)
+        if (type.layer == FavoriteFood)
         {
             Debug.Log("Favorite food detected!");
             GetFood(foodHealing, favoriteFoodMana);
@@ -134,7 +134,7 @@ public class AIController : MonoBehaviour
     {
         foreach (var food in _Ai.DetectedFood.ToList())
         {
-            if (food.Type == _food)
+            if (food.Object == _food)
             {
                 _Ai.DetectedFood.Remove(food);
                 Debug.Log("Removed collected food!");

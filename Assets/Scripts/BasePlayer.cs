@@ -19,7 +19,8 @@ public class ScannedEnemy //Stores detected enemy data
 
 public class FoodScanned //Stores detected food data
 {
-    public GameObject Type;
+    public GameObject Object;
+    public int Type;
     public float Distance;
     public Vector3 Position;
 }

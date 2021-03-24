@@ -27,7 +27,8 @@ public class DetectionScript : MonoBehaviour
             Debug.Log("Food Detected!");
             FoodScanned scannedFood = new FoodScanned();
             scannedFood.Distance = Vector3.Distance(transform.root.position, other.transform.position);
-            scannedFood.Type = other.gameObject;
+            scannedFood.Type = other.gameObject.layer;
+            scannedFood.Object = other.gameObject;
             scannedFood.Position = other.transform.position;
             AiScript.DetectedFood.Add(scannedFood);
             if (_gameManager.isGameStarted)
@@ -79,7 +80,7 @@ public class DetectionScript : MonoBehaviour
             //Remove out-of-range food from list
             foreach (var food in AiScript.DetectedFood.ToList())
             {
-                if (food.Type == other.gameObject)
+                if (food.Object == other.gameObject)
                 {
                     AiScript.DetectedFood.Remove(food);
                     Debug.Log("Food Lost!");
