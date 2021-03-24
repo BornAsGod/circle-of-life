@@ -72,8 +72,8 @@ GameObject:
   m_Component:
   - component: {fileID: 594402927798847826}
   - component: {fileID: 1196984381151070234}
-  - component: {fileID: 2092949462041923864}
   - component: {fileID: 331061280299165012}
+  - component: {fileID: 2261441454347614064}
   m_Layer: 11
   m_Name: DetectionSphere
   m_TagString: Untagged
@@ -103,19 +103,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102093940886929261}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!135 &2092949462041923864
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1102093940886929261}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0.05}
 --- !u!114 &331061280299165012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +115,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fc4c5f197bb835459be871342ef425f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &2261441454347614064
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102093940886929261}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1.5
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3661456170123696085
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,7 +588,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 8
-  m_BaseOffset: 1
+  m_BaseOffset: -0.03
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!54 &8326300966771306665
@@ -618,8 +619,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07951659c73067947b80568858ac3c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 5
-  canAttack: 1
   attack: {fileID: 2283732495646547128}
   detect: {fileID: 331061280299165012}
   AiId: 2
@@ -627,6 +626,7 @@ MonoBehaviour:
   specialAttackBar: 0
   agent: {fileID: 5550827986266864275}
   FavoriteFood: 14
+  anim: {fileID: 5550827986330279715}
   wanderRadius: 400
   wanderTimer: 10
   Home: {fileID: 0}
@@ -635,6 +635,8 @@ MonoBehaviour:
   ProjectilePrefab: {fileID: 7532958096377329594, guid: c49e4b4bf6168114a95d4419c19e67ac,
     type: 3}
   ProjectileSpawn: {fileID: 8747559523878737026}
+  attackCooldown: 5
+  canAttack: 1
 --- !u!136 &1794126726
 CapsuleCollider:
   m_ObjectHideFlags: 0

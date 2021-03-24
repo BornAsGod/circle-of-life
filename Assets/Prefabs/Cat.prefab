@@ -1110,7 +1110,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 8
-  m_BaseOffset: 1
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!54 &662472100568119601
@@ -1141,8 +1141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07951659c73067947b80568858ac3c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 5
-  canAttack: 1
   attack: {fileID: 858074796962444082}
   detect: {fileID: 7463520400662986781}
   AiId: 2
@@ -1150,6 +1148,7 @@ MonoBehaviour:
   specialAttackBar: 0
   agent: {fileID: 7635323702083613286}
   FavoriteFood: 17
+  anim: {fileID: 7635323703379562556}
   wanderRadius: 400
   wanderTimer: 10
   Home: {fileID: 0}
@@ -1158,6 +1157,8 @@ MonoBehaviour:
   ProjectilePrefab: {fileID: 7532958096377329594, guid: c49e4b4bf6168114a95d4419c19e67ac,
     type: 3}
   ProjectileSpawn: {fileID: 3051883831713560128}
+  attackCooldown: 5
+  canAttack: 1
 --- !u!1 &7635323703388832504
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,8 +1291,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5230215252749946185}
   - component: {fileID: 839091635869429900}
-  - component: {fileID: 5377744020055580265}
   - component: {fileID: 7463520400662986781}
+  - component: {fileID: 1049175190816079843}
   m_Layer: 11
   m_Name: DetectionSphere
   m_TagString: Untagged
@@ -1321,19 +1322,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8969255698330193113}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!135 &5377744020055580265
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8969255698330193113}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7463520400662986781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1346,3 +1334,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fc4c5f197bb835459be871342ef425f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &1049175190816079843
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8969255698330193113}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1.5
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: 0}

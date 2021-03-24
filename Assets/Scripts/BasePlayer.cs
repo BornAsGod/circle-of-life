@@ -60,6 +60,7 @@ public class BasePlayer
             enemy.Health -= Player.basicDamage;
             Player.canAttack = false;
             Player.attackCooldown = 5f;
+            Player.anim.SetBool("attack", true);
         }
     }  
     

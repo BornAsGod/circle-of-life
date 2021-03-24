@@ -6,13 +6,12 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.PlayerLoop;
 using Random = UnityEngine.Random;
-
+[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(Animator))]
 [DisallowMultipleComponent]
 public class AIController : MonoBehaviour
 {
-    public float attackCooldown = 5f;
-    public bool canAttack = true;
-
+    
     [Header("Player Properties")]
     public AttackScript attack;
     public DetectionScript detect;
@@ -26,6 +25,9 @@ public class AIController : MonoBehaviour
     public int FavoriteFood;
     public static float foodHealing = 15f;
     public static float favoriteFoodMana = 25f;
+
+    [Header("Animation")] 
+    public Animator anim = null;
     
     [Header("Wandering")]
     [SerializeField] private float wanderRadius;
@@ -38,6 +40,8 @@ public class AIController : MonoBehaviour
     public float basicDamage = 10f; 
     public GameObject ProjectilePrefab = null;
     public Transform ProjectileSpawn = null;
+    public float attackCooldown = 5f;
+    public bool canAttack = true;
 
     private void Awake()
     {
@@ -66,6 +70,7 @@ public class AIController : MonoBehaviour
 
     private void Update()
     {
+        AnimatePlayer();
         timer += Time.deltaTime; //Wandering timer
         //Assign new wandering position when timer hits 0
         if (timer >= wanderTimer) 
@@ -170,6 +175,23 @@ public class AIController : MonoBehaviour
         if (specialAttackBar > 100f)
         {
             specialAttackBar = 100f;
+        }
+    }
+
+    private void AnimatePlayer()
+    {
+        if (agent.remainingDistance > 1f)
+        {
+            anim.SetBool("move", true);
+        }
+        else
+        {
+            anim.SetBool("move", false);
+        }
+
+        if (anim.GetBool("attack"))
+        {
+            anim.SetBool("attack", false);
         }
     }
 }
