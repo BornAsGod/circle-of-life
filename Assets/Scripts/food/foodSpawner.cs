@@ -5,7 +5,7 @@ using UnityEngine;
 public class foodSpawner : MonoBehaviour
 {
 
-    public GameObject Food;
+    
 
     public GameManager _GameManager;
 
@@ -16,6 +16,7 @@ public class foodSpawner : MonoBehaviour
     public Transform dirt;
     public Transform sandstone;
 
+    private float offset = 8.5f;
     public int Maxfood;
     public int FoodSpawned = 0;
     
@@ -29,12 +30,7 @@ public class foodSpawner : MonoBehaviour
     GameObject currentBiome;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-        
-    }
+    
 
 
     // Update is called once per frame
@@ -42,16 +38,17 @@ public class foodSpawner : MonoBehaviour
     {
         if (_GameManager.isGameStarted)
         {
-            SpawningFoodGrass();
+            SpawningFoodMid();
         }
     }
     public void SpawningFoodMid()
     {
+        PickFood();
         int randomNum = Random.Range(0, Mid.childCount);
         PickFood();
         if (Maxfood>FoodSpawned)
         {
-            Instantiate(currentFood, Mid.transform.GetChild(randomNum).position + (transform.up * 8.5f), Quaternion.identity);
+            Instantiate(currentFood, Mid.transform.GetChild(randomNum).position + (transform.up * offset), Quaternion.identity);
             FoodSpawned++;
         }
 
