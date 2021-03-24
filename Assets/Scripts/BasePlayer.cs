@@ -54,8 +54,14 @@ public class BasePlayer
         /*
          * Calls TakeDamage on the in-range enemy
          */
-        enemy.Health -= Player.basicDamage;
-    }    
+        if (Player.canAttack)
+        {
+            enemy.Health -= Player.basicDamage;
+            Player.canAttack = false;
+            Player.attackCooldown = 5f;
+        }
+    }  
+    
     public void SpecialAttack() //Special attack projectile
     {
         /*

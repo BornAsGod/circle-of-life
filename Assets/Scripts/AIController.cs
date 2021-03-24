@@ -10,6 +10,8 @@ using Random = UnityEngine.Random;
 [DisallowMultipleComponent]
 public class AIController : MonoBehaviour
 {
+    public float attackCooldown = 5f;
+    public bool canAttack = true;
 
     [Header("Player Properties")]
     public AttackScript attack;
@@ -66,10 +68,21 @@ public class AIController : MonoBehaviour
     {
         timer += Time.deltaTime; //Wandering timer
         //Assign new wandering position when timer hits 0
-        if (timer >= wanderTimer) {
+        if (timer >= wanderTimer) 
+        {
             Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
             timer = 0;
             _Ai.SetWanderTarget(newPos);
+        }
+
+        if (!canAttack)
+        {
+            attackCooldown -= Time.deltaTime;
+
+            if (attackCooldown <= 0)
+            {
+                canAttack = true;
+            }
         }
     }
     
