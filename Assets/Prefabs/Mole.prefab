@@ -5005,9 +5005,6 @@ MonoBehaviour:
   wanderRadius: 400
   wanderTimer: 10
   Home: {fileID: 0}
-  WanderLayer:
-    serializedVersion: 2
-    m_Bits: 512
   specialDamage: 25
   basicDamage: 10
   ProjectilePrefab: {fileID: 7532958096377329594, guid: c49e4b4bf6168114a95d4419c19e67ac,

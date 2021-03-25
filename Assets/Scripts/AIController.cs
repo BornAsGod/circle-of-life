@@ -50,7 +50,6 @@ public class AIController : MonoBehaviour
     [SerializeField] private float wanderTimer;
     private float timer;
     public Transform Home;
-    public LayerMask WanderLayer;
     
     [Header("Attack")]
     public float specialDamage = 25f; //Special attack damage
@@ -95,7 +94,7 @@ public class AIController : MonoBehaviour
         //Assign new wandering position when timer hits 0
         if (timer >= wanderTimer) 
         {
-            Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, WanderLayer);
+            Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
             timer = 0;
             _Ai.SetWanderTarget(newPos);
         }
