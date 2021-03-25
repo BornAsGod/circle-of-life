@@ -56,12 +56,29 @@ public class AndreiAI : BasePlayer
                     }
                 }else
                 {
-                    yield return Move(wanderTarget);
+                    yield return RandomMove(wanderTarget);
                 }
             }
             if (Player.Health <= 20)
             {
+                if (DetectedFood.Count > 0)
+                {
+                    if (GetClosestFood().Type == Player.FavoriteFood)
+                    {
+                        yield return Move(GetClosestFood().Position);
+                    }else
+                    {
+                        yield return Move(GetClosestFood().Position);
+                    }
 
+                }else if (DetectedEnemies.Count > 0)
+                {
+                    yield return Move(GetClosest).Position;
+                }
+                else
+                {
+                    yield return RandomMove(wanderTarget);
+                }
             }
             yield return null;
         }

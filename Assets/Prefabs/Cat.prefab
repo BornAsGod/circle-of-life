@@ -1046,6 +1046,7 @@ GameObject:
   - component: {fileID: 7635323702083613286}
   - component: {fileID: 662472100568119601}
   - component: {fileID: -3787875925157559667}
+  - component: {fileID: 566467847225912035}
   m_Layer: 8
   m_Name: Cat
   m_TagString: Player
@@ -1159,6 +1160,20 @@ MonoBehaviour:
   ProjectileSpawn: {fileID: 3051883831713560128}
   attackCooldown: 5
   canAttack: 1
+--- !u!136 &566467847225912035
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7635323703388832444}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 5.37
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 4.07, z: 0.78}
 --- !u!1 &7635323703388832504
 GameObject:
   m_ObjectHideFlags: 0
