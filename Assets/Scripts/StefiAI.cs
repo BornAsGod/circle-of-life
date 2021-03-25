@@ -18,7 +18,7 @@ public class StefiAI : BasePlayer
                         {
                             TurnTowardsPlayer(GetClosestEnemy().Object);
                             SpecialAttack();
-                            yield return null;
+                            yield return DoNothing();
                         }
                         else
                         {
@@ -31,7 +31,7 @@ public class StefiAI : BasePlayer
                         {
                             TurnTowardsPlayer(GetClosestEnemy().Object);
                             SpecialAttack();
-                            yield return null;
+                            yield return DoNothing();
                         }
                         else
                         {
@@ -59,11 +59,11 @@ public class StefiAI : BasePlayer
                         {
                             TurnTowardsPlayer(GetClosestEnemy().Object);
                             SpecialAttack();
-                            yield return null;
+                            yield return DoNothing();
                         }
                         else
                         {
-                            yield return Move(GetClosestEnemy().Position + new Vector3(20f, 0f, 20f));
+                            yield return Move(Player.Home.position);
                         }
                     }
 

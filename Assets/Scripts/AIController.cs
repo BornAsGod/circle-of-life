@@ -108,6 +108,11 @@ public class AIController : MonoBehaviour
                 canAttack = true;
             }
         }
+
+        if (Health <= 0f)
+        {
+            Destroy(this.gameObject);
+        }
     }
     
     //Gets random position for wandering
