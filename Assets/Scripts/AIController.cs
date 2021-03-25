@@ -112,7 +112,7 @@ public class AIController : MonoBehaviour
          * Moves player to set destination
          */
         agent.SetDestination(position);
-        yield return new WaitForFixedUpdate();
+        yield return new WaitUntil(() => agent.remainingDistance < 1f);
     }
 
     public IEnumerator _DoNothing()
