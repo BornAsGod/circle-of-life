@@ -35,7 +35,7 @@ public class projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (!other.gameObject.CompareTag("Player"))
+        if (!other.gameObject.CompareTag("Collector"))
         {
             return;
         }
