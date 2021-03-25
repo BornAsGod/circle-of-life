@@ -95,6 +95,9 @@ public class AndreiAI : BasePlayer
         if (food.Type == Player.FavoriteFood)
         {
             yield return Move(food.Position);
+        }else
+        {
+            yield return Move(food.Position);
         }
         yield return null;
     }
