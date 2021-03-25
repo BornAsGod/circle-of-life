@@ -80,6 +80,10 @@ public class StefiAI : BasePlayer
                             yield return Move(food.Position);
                         }
                     }
+                    else
+                    {
+                        yield return Move(wanderTarget);
+                    }
                     
                     break;
                 

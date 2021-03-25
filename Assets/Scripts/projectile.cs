@@ -24,13 +24,10 @@ public class projectile : MonoBehaviour
         damage = _damage;
         rb.AddForce(face * speed, ForceMode.Impulse);
     }
+
     void EnableCollider()
     {
         GetComponent<Collider>().enabled = true;
-    }
-    private void Destroy()
-    {
-        Destroy(this);
     }
 
     private void OnCollisionEnter(Collision other)
@@ -41,6 +38,6 @@ public class projectile : MonoBehaviour
         }
 
         other.gameObject.GetComponent<AIController>().Health -= damage;
-        Destroy(this);
+        Destroy(this.gameObject);
     }
 }
