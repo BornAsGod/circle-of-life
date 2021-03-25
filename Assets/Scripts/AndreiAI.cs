@@ -73,7 +73,7 @@ public class AndreiAI : BasePlayer
 
                 }else if (DetectedEnemies.Count > 0)
                 {
-                    yield return Move(GetClosest).Position;
+                    yield return Move(GetClosestEnemy().Position);
                 }
                 else
                 {
