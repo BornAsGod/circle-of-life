@@ -16,7 +16,7 @@ public class AndreiAI : BasePlayer
 
                 }else if (DetectedFood.Count > 0)
                 {
-                    if (GetClosestFood().Type == Player.favoriteFood)
+                    if (GetClosestFood().Type == Player.FavoriteFood)
                     {
                         yield return Move(GetClosestFood().Position);
                     }
@@ -50,7 +50,7 @@ public class AndreiAI : BasePlayer
             {
                 if (DetectedFood.Count > 0)
                 {
-                    if (GetClosestFood().Type == Player.favoriteFood)
+                    if (GetClosestFood().Type == Player.FavoriteFood)
                     {
                         yield return Move(GetClosestFood().Position);
                     }
@@ -75,7 +75,7 @@ public class AndreiAI : BasePlayer
 
     public override IEnumerator ScannedFoodEvent(FoodScanned food)
     {
-        if (food.Type == Player.favoriteFood)
+        if (food.Type == Player.FavoriteFood)
         {
             yield return Move(food.Position);
         }
