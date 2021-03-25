@@ -15,14 +15,19 @@ public class projectile : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        Invoke("EnableCollider", colider);
-        Invoke("Destroy", AliveTime);
+        Invoke(nameof(EnableCollider), colider);
+        Invoke(nameof(DestoryAfterTime), AliveTime);
     }
     
     public void Initialize(Vector3 face, float _damage)
     {
         damage = _damage;
         rb.AddForce(face * speed, ForceMode.Impulse);
+    }
+
+    public void DestoryAfterTime()
+    {
+        Destroy(this.gameObject);
     }
 
     void EnableCollider()
