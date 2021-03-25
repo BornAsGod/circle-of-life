@@ -142,7 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: {fileID: 6478835412593082375}
   detect: {fileID: 8764005670972091167}
-  AiId: 0
+  AiId: 1
   Health: 100
   specialAttackBar: 0
   agent: {fileID: 4013435065591491046}

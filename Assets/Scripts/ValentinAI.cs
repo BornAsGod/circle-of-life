@@ -73,7 +73,7 @@ public class ValentinAI : BasePlayer
 
                 if (DetectedEnemies.Count >= 1)
                 {
-                    yield return Move(GetClosestEnemy().Position);
+                    yield return RandomMove(GetClosestEnemy().Position);
                 }
                 else
                 {
@@ -118,8 +118,9 @@ public class ValentinAI : BasePlayer
         else
         {
             BasicAttack(enemy);
+            yield return DoNothing();
         }
-        return null;
+        
     }
     public override IEnumerator ScannedFoodEvent(FoodScanned food)
     {
