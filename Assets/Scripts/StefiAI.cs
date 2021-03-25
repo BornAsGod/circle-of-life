@@ -46,7 +46,7 @@ public class StefiAI : BasePlayer
 
                     break;
                 
-                case float _ when (Player.Health > 50f):
+                case float _ when (Player.Health >= 50f):
 
                     if (DetectedFood.Count > 0)
                     {
@@ -71,8 +71,6 @@ public class StefiAI : BasePlayer
                 
                 case float _ when (Player.Health < 50f):
 
-                    yield return Move(Player.Home.position);
-
                     if (DetectedFood.Count > 0)
                     {
                         foreach (var food in DetectedFood)
@@ -84,6 +82,8 @@ public class StefiAI : BasePlayer
                     {
                         yield return Move(wanderTarget);
                     }
+                    
+                    yield return Move(Player.Home.position);
                     
                     break;
                 

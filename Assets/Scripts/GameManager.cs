@@ -10,8 +10,12 @@ public class GameManager : MonoBehaviour
     [Header("Prefabs")] 
     public GameObject[] playerPrefabs = new GameObject[5];
     
-    [Header("Spawnpoints")] public Transform[] spawnPoints = new Transform[5];
-    
+    [Header("Spawnpoints")] 
+    public Transform[] spawnPoints = new Transform[5];
+
+    [Header("UI")] 
+    public Healthbar[] healthBars = new Healthbar[4];
+
     private List<AIController> players = new List<AIController>();
 
     private void Start()
@@ -20,6 +24,8 @@ public class GameManager : MonoBehaviour
         {
             GameObject player = Instantiate(playerPrefabs[i], spawnPoints[i].position, spawnPoints[i].rotation);
             AIController _ai = player.GetComponent<AIController>();
+            _ai._healthbar = healthBars[i];
+            healthBars[i].SetMaxHealth(_ai.Health);
             players.Add(_ai);
             _ai.Home = spawnPoints[i];
         }

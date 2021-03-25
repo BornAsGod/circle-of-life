@@ -21,6 +21,8 @@ public class AIController : MonoBehaviour
     public float specialAttackBar = 0f; //Mana bar
     [SerializeField] private NavMeshAgent agent;
 
+    public Healthbar _healthbar;
+
     [Header("Food")]
     public int FavoriteFood;
     public static float foodHealing = 15f;
@@ -179,7 +181,8 @@ public class AIController : MonoBehaviour
          * Gets automatically called when colliding with food
          * favorite food check is done in AIController, and the right values get added
          */
-        Health += healthAmount;
+        Health += healthAmount; 
+        _healthbar.AdjustHealth(Health);
         specialAttackBar += specialAttackMana;
         Regen.Play();
         if (Health > 100f)
@@ -208,6 +211,7 @@ public class AIController : MonoBehaviour
     {
         Damage.Play();
         Health -= damage;
+        _healthbar.AdjustHealth(Health);
     }
 
     private void AnimatePlayer()
