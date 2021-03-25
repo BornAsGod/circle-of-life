@@ -42,7 +42,7 @@ public class Projectile : MonoBehaviour
             return;
         }
 
-        other.gameObject.GetComponent<AIController>().Health -= damage;
+        other.gameObject.GetComponent<AIController>().TakeDamage(damage);
         Destroy(this.gameObject);
     }
 }

@@ -22,14 +22,17 @@ public class AIController : MonoBehaviour
     [SerializeField] private NavMeshAgent agent;
 
     [Header("Food")]
-
     public int FavoriteFood;
-
     public static float foodHealing = 15f;
     public static float favoriteFoodMana = 25f;
 
     [Header("Animation")] 
     public Animator anim = null;
+
+    [Header("Particles")] 
+    public ParticleSystem Regen;
+
+    public ParticleSystem Damage;
     
     [Header("Wandering")]
     [SerializeField] private float wanderRadius;
@@ -178,6 +181,7 @@ public class AIController : MonoBehaviour
          */
         Health += healthAmount;
         specialAttackBar += specialAttackMana;
+        Regen.Play();
         if (Health > 100f)
         {
             Health = 100f;
@@ -187,6 +191,23 @@ public class AIController : MonoBehaviour
         {
             specialAttackBar = 100f;
         }
+    }
+
+    public void BasicAttack(AIController enemy)
+    {
+        if (canAttack)
+        {
+            enemy.TakeDamage(basicDamage);
+            canAttack = false;
+            attackCooldown = 5f;
+            anim.SetBool("attack", true);
+        }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        Damage.Play();
+        Health -= damage;
     }
 
     private void AnimatePlayer()
