@@ -1209,7 +1209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: {fileID: 858074796962444082}
   detect: {fileID: 7463520400662986781}
-  AiId: 2
+  AiId: 3
   Health: 100
   specialAttackBar: 0
   agent: {fileID: 7635323702083613286}
@@ -1546,12 +1546,12 @@ PrefabInstance:
     - target: {fileID: 9086080757751976147, guid: f8c30f896b4a26c40bdb4f3bde804470,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.85
+      value: 3.34
       objectReference: {fileID: 0}
     - target: {fileID: 9086080757751976147, guid: f8c30f896b4a26c40bdb4f3bde804470,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.72
+      value: 0.41
       objectReference: {fileID: 0}
     - target: {fileID: 9086080757751976147, guid: f8c30f896b4a26c40bdb4f3bde804470,
         type: 3}
