@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     [Header("UI")] 
     public Healthbar[] healthBars = new Healthbar[4];
 
+    public Manabar[] manaBars = new Manabar[4];
+
     private List<AIController> players = new List<AIController>();
 
     private void Start()
@@ -24,7 +26,8 @@ public class GameManager : MonoBehaviour
         {
             GameObject player = Instantiate(playerPrefabs[i], spawnPoints[i].position, spawnPoints[i].rotation);
             AIController _ai = player.GetComponent<AIController>();
-            _ai._healthbar = healthBars[i];
+            _ai.healthbar = healthBars[i];
+            _ai.manabar = manaBars[i];
             healthBars[i].SetMaxHealth(_ai.Health);
             players.Add(_ai);
             _ai.Home = spawnPoints[i];

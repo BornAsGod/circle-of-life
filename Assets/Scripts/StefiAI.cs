@@ -14,7 +14,7 @@ public class StefiAI : BasePlayer
                     
                     if (DetectedEnemies.Count == 1)
                     {
-                        if (Player.specialAttackBar == 100f)
+                        if (Player.Mana == 100f)
                         {
                             TurnTowardsPlayer(GetClosestEnemy().Object);
                             SpecialAttack();
@@ -27,7 +27,7 @@ public class StefiAI : BasePlayer
                     }
                     else if (DetectedEnemies.Count > 1)
                     {
-                        if (Player.specialAttackBar == 100f)
+                        if (Player.Mana == 100f)
                         {
                             TurnTowardsPlayer(GetClosestEnemy().Object);
                             SpecialAttack();
@@ -55,7 +55,7 @@ public class StefiAI : BasePlayer
 
                     if (DetectedEnemies.Count > 0)
                     {
-                        if (Player.specialAttackBar == 100f)
+                        if (Player.Mana == 100f)
                         {
                             TurnTowardsPlayer(GetClosestEnemy().Object);
                             SpecialAttack();

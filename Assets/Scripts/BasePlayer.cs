@@ -68,10 +68,10 @@ public class BasePlayer
         /*
          * Launches projectile that damages enemy on collision
          */
-        if (Player.specialAttackBar == 100f)
+        if (Player.Mana == 100f)
         {
             Player.SpecialAttack(Player.specialDamage);
-            Player.specialAttackBar = 0f;
+            Player.Mana = 0f;
         }
     }
     

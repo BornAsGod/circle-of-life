@@ -29,7 +29,7 @@ public class AndreiAI : BasePlayer
             {
                 if (DetectedEnemies.Count > 0)
                 {
-                    if (Player.specialAttackBar == 100f)
+                    if (Player.Mana == 100f)
                     {
                         SpecialAttack();
                         yield return null;

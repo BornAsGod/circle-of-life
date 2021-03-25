@@ -67,7 +67,7 @@ public class ValentinAI : BasePlayer
         while (Player.Health > 0)
         {
             
-            if (Player.Health >= 50f || Player.specialAttackBar == 100)
+            if (Player.Health >= 50f || Player.Mana == 100)
             {
 
 
@@ -80,7 +80,7 @@ public class ValentinAI : BasePlayer
                     yield return RandomMove(wanderTarget);
                 }
             }
-            else if (Player.Health<50f && Player.specialAttackBar == 100)
+            else if (Player.Health<50f && Player.Mana == 100)
             {
                 if (DetectedEnemies.Count >= 1)
                 {
@@ -91,7 +91,7 @@ public class ValentinAI : BasePlayer
                     yield return RandomMove(wanderTarget);
                 }
             }
-            else if (Player.Health < 50f && Player.specialAttackBar != 100)
+            else if (Player.Health < 50f && Player.Mana != 100)
             {
                 if (DetectedFood.Count >= 1)
                 {
@@ -111,7 +111,7 @@ public class ValentinAI : BasePlayer
     public override IEnumerator EnemyInRangeEvent(AIController enemy)
     {
         
-        if (Player.specialAttackBar == 100)
+        if (Player.Mana == 100)
         {
             SpecialAttack();
         }

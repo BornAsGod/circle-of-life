@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.PlayerLoop;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
@@ -18,10 +19,11 @@ public class AIController : MonoBehaviour
     public int AiId;
     public BasePlayer _Ai;
     public float Health = 100f;
-    public float specialAttackBar = 0f; //Mana bar
+    [FormerlySerializedAs("specialAttackBar")] public float Mana = 0f; //Mana bar
     [SerializeField] private NavMeshAgent agent;
 
-    public Healthbar _healthbar;
+    public Healthbar healthbar;
+    public Manabar manabar;
 
     [Header("Food")]
     public int FavoriteFood;
@@ -165,6 +167,7 @@ public class AIController : MonoBehaviour
 
     public void SpecialAttack(float damage)
     {
+        manabar.AdjustMana(0f);
         GameObject insProj = Instantiate(ProjectilePrefab, ProjectileSpawn.position, Quaternion.identity);
         insProj.GetComponent<Projectile>().Initialize(ProjectileSpawn.forward, damage);
     }
@@ -182,17 +185,18 @@ public class AIController : MonoBehaviour
          * favorite food check is done in AIController, and the right values get added
          */
         Health += healthAmount; 
-        _healthbar.AdjustHealth(Health);
-        specialAttackBar += specialAttackMana;
+        healthbar.AdjustHealth(Health);
+        Mana += specialAttackMana;
+        manabar.AdjustMana(Mana);
         Regen.Play();
         if (Health > 100f)
         {
             Health = 100f;
         }
 
-        if (specialAttackBar > 100f)
+        if (Mana > 100f)
         {
-            specialAttackBar = 100f;
+            Mana = 100f;
         }
     }
 
@@ -210,8 +214,8 @@ public class AIController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         Damage.Play();
-        Health -= damage;
-        _healthbar.AdjustHealth(Health);
+        Health -= damage; 
+        healthbar.AdjustHealth(Health);
     }
 
     private void AnimatePlayer()

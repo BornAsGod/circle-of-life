@@ -58,7 +58,7 @@ public class FadiAI : BasePlayer
     public override IEnumerator ScannedEnemyEvent(ScannedEnemy enemy)
     {
         Debug.Log("Scanned Enemy Event Triggered!");
-        if (Player.specialAttackBar < 100f)
+        if (Player.Mana < 100f)
         {
             if (Player.Health > 70f)
             {
