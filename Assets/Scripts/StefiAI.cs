@@ -16,6 +16,7 @@ public class StefiAI : BasePlayer
                     {
                         if (Player.specialAttackBar == 100f)
                         {
+                            TurnTowardsPlayer(GetClosestEnemy().Object);
                             SpecialAttack();
                             yield return null;
                         }
@@ -28,6 +29,7 @@ public class StefiAI : BasePlayer
                     {
                         if (Player.specialAttackBar == 100f)
                         {
+                            TurnTowardsPlayer(GetClosestEnemy().Object);
                             SpecialAttack();
                             yield return null;
                         }
@@ -42,8 +44,6 @@ public class StefiAI : BasePlayer
                         yield return Move(GetClosestFood().Position);
                     }
 
-                    yield return Move(wanderTarget);
-
                     break;
                 
                 case float _ when (Player.Health > 50f):
@@ -57,6 +57,7 @@ public class StefiAI : BasePlayer
                     {
                         if (Player.specialAttackBar == 100f)
                         {
+                            TurnTowardsPlayer(GetClosestEnemy().Object);
                             SpecialAttack();
                             yield return null;
                         }
@@ -65,9 +66,7 @@ public class StefiAI : BasePlayer
                             yield return Move(GetClosestEnemy().Position + new Vector3(20f, 0f, 20f));
                         }
                     }
-                    
-                    yield return Move(wanderTarget);
-                    
+
                     break;
                 
                 case float _ when (Player.Health < 50f):
@@ -86,11 +85,9 @@ public class StefiAI : BasePlayer
                 
                 default:
 
-                    yield return Move(wanderTarget);
-                    
                     break;
             }
-            yield return Move(wanderTarget);
+            yield return RandomMove(wanderTarget);
         }
     }
 
