@@ -158,7 +158,7 @@ public class AIController : MonoBehaviour
     public void SpecialAttack(float damage)
     {
         GameObject insProj = Instantiate(ProjectilePrefab, ProjectileSpawn.position, Quaternion.identity);
-        insProj.GetComponent<projectile>().Initialize(ProjectileSpawn.forward, damage);
+        insProj.GetComponent<Projectile>().Initialize(ProjectileSpawn.forward, damage);
     }
 
     public void RunGame()
