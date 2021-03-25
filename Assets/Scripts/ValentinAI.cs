@@ -77,7 +77,7 @@ public class ValentinAI : BasePlayer
                 }
                 else
                 {
-                    yield return Move(wanderTarget);
+                    yield return RandomMove(wanderTarget);
                 }
             }
             else if (Player.Health<50f && Player.specialAttackBar == 100)
@@ -88,7 +88,7 @@ public class ValentinAI : BasePlayer
                 }
                 else
                 {
-                    yield return Move(wanderTarget);
+                    yield return RandomMove(wanderTarget);
                 }
             }
             else if (Player.Health < 50f && Player.specialAttackBar != 100)
@@ -100,7 +100,7 @@ public class ValentinAI : BasePlayer
                 }
                 else
                 {
-                    yield return Move(wanderTarget); 
+                    yield return RandomMove(wanderTarget);
                 }
             }
             
@@ -132,13 +132,13 @@ public class ValentinAI : BasePlayer
             }
             else
             {
-                yield return Move(wanderTarget);
+                yield return RandomMove(wanderTarget);
             }
         }
         else
         {
             yield return Move(food.Position);
-            yield return Move(wanderTarget);
+            yield return RandomMove(wanderTarget);
         }
     }
 
