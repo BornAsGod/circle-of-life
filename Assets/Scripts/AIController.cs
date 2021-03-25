@@ -33,6 +33,13 @@ public class AIController : MonoBehaviour
     [Header("Animation")] 
     public Animator anim = null;
 
+    private float animationTimer = 1f;
+    private float animationTime = 0.3f;
+
+    [Header("Audio")] 
+    [SerializeField] private AudioSource damageSound;
+    [SerializeField] private AudioSource healthSound;
+    
     [Header("Particles")] 
     public ParticleSystem Regen;
 
@@ -189,6 +196,7 @@ public class AIController : MonoBehaviour
         Mana += specialAttackMana;
         manabar.AdjustMana(Mana);
         Regen.Play();
+        healthSound.Play();
         if (Health > 100f)
         {
             Health = 100f;
@@ -208,11 +216,13 @@ public class AIController : MonoBehaviour
             canAttack = false;
             attackCooldown = 5f;
             anim.SetBool("attack", true);
+            animationTimer = animationTime;
         }
     }
 
     public void TakeDamage(float damage)
     {
+        damageSound.Play();
         Damage.Play();
         Health -= damage; 
         healthbar.AdjustHealth(Health);
@@ -220,6 +230,7 @@ public class AIController : MonoBehaviour
 
     private void AnimatePlayer()
     {
+        animationTimer -= Time.deltaTime;
         if (agent.remainingDistance > 1f)
         {
             anim.SetBool("move", true);
@@ -229,7 +240,7 @@ public class AIController : MonoBehaviour
             anim.SetBool("move", false);
         }
 
-        if (anim.GetBool("attack"))
+        if (animationTimer <= 0f)
         {
             anim.SetBool("attack", false);
         }

@@ -50,7 +50,7 @@ public class FadiAI : BasePlayer
                 }
             }
 
-            yield return null;
+            yield return RandomMove(wanderTarget);
         }
         yield return null;
     }
