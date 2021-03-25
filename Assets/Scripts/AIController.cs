@@ -115,6 +115,12 @@ public class AIController : MonoBehaviour
         yield return new WaitUntil(() => agent.remainingDistance < 1f);
     }
 
+    public IEnumerator _RandomMove(Vector3 position)
+    {
+        agent.SetDestination(position);
+        yield return new WaitForFixedUpdate();
+    }
+
     public IEnumerator _DoNothing()
     {
         yield return new WaitForFixedUpdate();

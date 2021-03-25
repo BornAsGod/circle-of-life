@@ -34,7 +34,7 @@ public class FadiAI : BasePlayer
                 }
                 else
                 {
-                    yield return Move(wanderTarget); //If nothing is detected, wander around
+                    yield return RandomMove(wanderTarget); //If nothing is detected, wander around
                 }
             }
             else
@@ -46,7 +46,7 @@ public class FadiAI : BasePlayer
                 }
                 else
                 {
-                    yield return Move(wanderTarget); //If nothing is detected, wander around
+                    yield return RandomMove(wanderTarget); //If nothing is detected, wander around
                 }
             }
 
@@ -67,7 +67,7 @@ public class FadiAI : BasePlayer
             }
             else
             {
-                yield return Move(wanderTarget);
+                yield return RandomMove(wanderTarget);
             }
         }
         else
@@ -87,7 +87,7 @@ public class FadiAI : BasePlayer
         }
         else
         {
-            yield return Move(wanderTarget);
+            yield return RandomMove(wanderTarget);
         }
     }
 
@@ -107,7 +107,7 @@ public class FadiAI : BasePlayer
             }
             else
             {
-                yield return Move(wanderTarget);
+                yield return RandomMove(wanderTarget);
             }
         }
     }

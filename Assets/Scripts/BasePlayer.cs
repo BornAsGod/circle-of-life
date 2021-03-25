@@ -50,6 +50,11 @@ public class BasePlayer
          */
         yield return Player._Move(position);
     }
+
+    public IEnumerator RandomMove(Vector3 position)
+    {
+        yield return Player._RandomMove(position);
+    }
     public void BasicAttack(AIController enemy) //Attacks in range player
     {
         /*
