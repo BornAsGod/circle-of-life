@@ -116,7 +116,7 @@ public class AIController : MonoBehaviour
     }
     
     //Gets random position for wandering
-    public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask) {
+    public Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask) {
         Vector3 randDirection = Random.insideUnitSphere * dist;
  
         randDirection += origin;
@@ -223,6 +223,12 @@ public class AIController : MonoBehaviour
             anim.SetBool("attack", true);
             animationTimer = animationTime;
         }
+    }
+
+    public float HomeDistance()
+    {
+        float distance = Vector3.Distance(transform.position, Home.position);
+        return distance;
     }
 
     public void TakeDamage(float damage)

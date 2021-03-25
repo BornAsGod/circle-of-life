@@ -105,6 +105,34 @@ public class BasePlayer
         wanderTarget = target;
     }
 
+    protected Vector3 GetFavoriteFood()
+    {
+         Vector3 _food = Vector3.zero;
+        foreach (var food in DetectedFood)
+        {
+            if (food.Type == Player.FavoriteFood)
+            {
+                _food = food.Position;
+            }
+        }
+        return _food;
+    }
+
+    protected bool CheckFavoriteFood()
+    {
+        bool isFav = false;
+
+        foreach (var food in DetectedFood)
+        {
+            if (food.Type == Player.FavoriteFood)
+            {
+                isFav = true;
+            }
+        }
+
+        return isFav;
+    }
+
     protected ScannedEnemy GetClosestEnemy() //Checks for closest enemy in DetectedEnemies list and returns its position
     {
         /*
@@ -182,7 +210,7 @@ public class BasePlayer
          * Health
          * Check ScannedFoodEvent for examples
          */
-        yield return null;
+        yield return new WaitForFixedUpdate();
     }
 
     public virtual IEnumerator ScannedFoodEvent(FoodScanned food) //Triggers when food is detected
@@ -202,7 +230,7 @@ public class BasePlayer
          * yield return Move(food.Position);
          * }
          */
-        yield return null;
+        yield return new WaitForFixedUpdate();
     }
 
     public virtual IEnumerator EnemyInRangeEvent(AIController enemy)
@@ -212,7 +240,7 @@ public class BasePlayer
          * to attack call:
          * BasicAttack(enemy);
          */
-        yield return null;
+        yield return new WaitForFixedUpdate();
     }
     
 }

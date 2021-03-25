@@ -14,23 +14,23 @@ public class FadiAI : BasePlayer
     {
         while (Player.Health > 0f)
         {
-            if (Player.Health > 75f)
+            if (Player.Health > 60f)
             {
-                //Prioritizing enemies over food, while health is over 75
-                if (DetectedEnemies.Count >= 1) //If there are detected enemies
-                {
-                    Debug.Log("Attacking!");
-                    yield return Move(GetClosestEnemy().Position); //Move to closest enemy
-                }
-
                 if (DetectedFood.Count >= 1) //If food detected
                 {
-                    //Food detected code
-                    if (GetClosestFood().Type == Player.FavoriteFood)
+                    if (CheckFavoriteFood())
                     {
-                        Debug.Log("Getting favorite food!");
-                        yield return Move(GetClosestFood().Position); //Go to closest food
+                        yield return Move(GetFavoriteFood());
                     }
+                    else
+                    {
+                        yield return RandomMove(wanderTarget);
+                    }
+                }
+
+                if (DetectedEnemies.Count >= 1) //If there are detected enemies
+                {
+                    yield return Move(GetClosestEnemy().Position); //Move to closest enemy
                 }
                 else
                 {
@@ -57,12 +57,10 @@ public class FadiAI : BasePlayer
 
     public override IEnumerator ScannedEnemyEvent(ScannedEnemy enemy)
     {
-        Debug.Log("Scanned Enemy Event Triggered!");
         if (Player.Mana < 100f)
         {
             if (Player.Health > 70f)
             {
-                Debug.Log("Going for enemy!");
                 yield return Move(enemy.Position);
             }
             else
@@ -79,7 +77,6 @@ public class FadiAI : BasePlayer
 
     public override IEnumerator EnemyInRangeEvent(AIController enemy)
     {
-        Debug.Log("Enemy In Range Triggered!");
         if (Player.Health > 50f)
         {
             BasicAttack(enemy);
@@ -93,17 +90,15 @@ public class FadiAI : BasePlayer
 
     public override IEnumerator ScannedFoodEvent(FoodScanned food)
     {
-        Debug.Log("Food Event Triggered!");
         if (Player.Health <= 50f)
         {
             yield return Move(food.Position);
         }
         else
         {
-            if (food.Type == Player.FavoriteFood)
+            if (CheckFavoriteFood())
             {
-                Debug.Log("Going for favorite food!");
-                yield return Move(food.Position);
+                yield return Move(GetFavoriteFood());
             }
             else
             {

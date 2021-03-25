@@ -73,21 +73,12 @@ public class StefiAI : BasePlayer
 
                     if (DetectedFood.Count > 0)
                     {
-                        foreach (var food in DetectedFood)
-                        {
-                            yield return Move(food.Position);
-                        }
+                        yield return Move(GetClosestFood().Position);
                     }
                     else
                     {
-                        yield return Move(wanderTarget);
+                        yield return RandomMove(wanderTarget);
                     }
-                    
-                    yield return Move(Player.Home.position);
-                    
-                    break;
-                
-                default:
 
                     break;
             }
@@ -98,7 +89,7 @@ public class StefiAI : BasePlayer
     public override IEnumerator EnemyInRangeEvent(AIController enemy)
     {
         BasicAttack(enemy);
-        yield return null;
+        yield return DoNothing();
     }
 
     public override IEnumerator ScannedFoodEvent(FoodScanned food)
@@ -108,6 +99,6 @@ public class StefiAI : BasePlayer
             yield return Move(food.Position);
         }
 
-        yield return null;
+        yield return DoNothing();
     }
 }
