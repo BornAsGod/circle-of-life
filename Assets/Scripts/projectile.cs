@@ -8,14 +8,14 @@ public class projectile : MonoBehaviour
     Rigidbody rb;
 
     public float AliveTime = 3f;
-    public float Radius = 2f;
+    public float colider = 0.2f;
     public float speed = 100f;
     private float damage;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        Invoke("EnableCollider", 0.2f);
+        Invoke("EnableCollider", colider);
         Invoke("Destroy", AliveTime);
     }
     
@@ -30,7 +30,7 @@ public class projectile : MonoBehaviour
     }
     private void Destroy()
     {
-        Destroy(gameObject);
+        Destroy(this);
     }
 
     private void OnCollisionEnter(Collision other)

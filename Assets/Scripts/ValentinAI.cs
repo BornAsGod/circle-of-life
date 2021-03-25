@@ -138,6 +138,7 @@ public class ValentinAI : BasePlayer
         else
         {
             yield return Move(food.Position);
+            yield return Move(wanderTarget);
         }
     }
 
