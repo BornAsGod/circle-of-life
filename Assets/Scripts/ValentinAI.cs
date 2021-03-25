@@ -47,41 +47,100 @@ public class ValentinAI : BasePlayer
      * 
      * roll a dice??
      * health food ???
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
      */
     Vector3 Home = new Vector3(278.6f, -105.7384f, 331.5f);
 
     private int Phase = 0;
     static Vector3 Duck = GameObject.FindGameObjectWithTag("Player").transform.position;
 
+    
     public override IEnumerator RunAI()
     {
         while (Player.Health > 0)
         {
-            switch (Phase)
+            
+            if (Player.Health >= 50f || Player.specialAttackBar == 100)
             {
-                case 0:
-                    yield return Move(Home);
-                    if (Player.transform.position == Home)
-                    {
-                        //Phase++;
-                    }
-                    break;
-                case 1:
-                    Vector3 Duck = Player.transform.position;
-                    Vector3 newPos = newPosition();
-                    yield return Move(newPos);
 
-                    //Vector3 newPos = RandomNavSphere(mTransform.position, wanderRadius, -1);
-                    //yield return Move(newPos);
 
-                    break;
-                default:
-                    break;
+                if (DetectedEnemies.Count >= 1)
+                {
+                    yield return Move(GetClosestEnemy().Position);
+                }
+                else
+                {
+                    yield return Move(wanderTarget);
+                }
             }
+            else if (Player.Health<50f && Player.specialAttackBar == 100)
+            {
+                if (DetectedEnemies.Count >= 1)
+                {
+                    yield return Move(GetClosestEnemy().Position);
+                }
+                else
+                {
+                    yield return Move(wanderTarget);
+                }
+            }
+            else if (Player.Health < 50f && Player.specialAttackBar != 100)
+            {
+                if (DetectedFood.Count >= 1)
+                {
+                    
+                    yield return Move(GetClosestFood().Position);
+                }
+                else
+                {
+                    yield return Move(wanderTarget); 
+                }
+            }
+            
             
         }
         yield return null;
     }
+    public override IEnumerator EnemyInRangeEvent(AIController enemy)
+    {
+        
+        if (Player.specialAttackBar == 100)
+        {
+            SpecialAttack();
+        }
+        else
+        {
+            BasicAttack(enemy);
+        }
+        return null;
+    }
+    public override IEnumerator ScannedFoodEvent(FoodScanned food)
+    {
+        
+        if (Player.Health >= 50f)
+        {
+            if (food.Type == Player.FavoriteFood)
+            {
+                yield return Move(food.Position);
+            }
+            else
+            {
+                yield return Move(wanderTarget);
+            }
+        }
+        else
+        {
+            yield return Move(food.Position);
+        }
+    }
+
     public static Vector3 newPosition()
     {
         float radius = 20f;
