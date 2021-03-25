@@ -172,10 +172,7 @@ public class BasePlayer
 
     public void TurnTowardsPlayer(GameObject player)
     {
-        float rotationSpeed = 10f;
-        Vector3 targetDirection = (player.transform.position - Player.transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(targetDirection);
-        Player.transform.rotation = Quaternion.Slerp(Player.transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+        Player.transform.LookAt(player.transform);
     }
     
     //Detection events
