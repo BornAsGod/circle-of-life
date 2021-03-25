@@ -29,10 +29,7 @@ public class foodSpawner : MonoBehaviour
     public GameObject[] spawnBiome;
     GameObject currentBiome;
 
-
     
-
-
     // Update is called once per frame
     void Update()
     {

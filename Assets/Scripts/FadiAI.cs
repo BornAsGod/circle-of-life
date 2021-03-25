@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using Unity.Collections.LowLevel.Unsafe;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
@@ -20,7 +21,7 @@ public class FadiAI : BasePlayer
                 {
                     Debug.Log("Attacking!");
                     yield return Move(GetClosestEnemy().Position); //Move to closest enemy
-                } else
+                }
 
                 if (DetectedFood.Count > 1) //If food detected
                 {
@@ -50,7 +51,6 @@ public class FadiAI : BasePlayer
             }
 
             yield return null;
-
         }
         yield return null;
     }
@@ -62,6 +62,7 @@ public class FadiAI : BasePlayer
         {
             if (Player.Health > 70f)
             {
+                Debug.Log("Going for enemy!");
                 yield return Move(enemy.Position);
             }
             else
@@ -101,6 +102,7 @@ public class FadiAI : BasePlayer
         {
             if (food.Type == Player.FavoriteFood)
             {
+                Debug.Log("Going for favorite food!");
                 yield return Move(food.Position);
             }
             else

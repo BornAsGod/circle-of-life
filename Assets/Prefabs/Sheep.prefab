@@ -816,10 +816,10 @@ MonoBehaviour:
   Health: 100
   specialAttackBar: 0
   agent: {fileID: 377438618466379202}
-  FavoriteFood: 18
+  FavoriteFood: 4
   anim: {fileID: 377438616704293647}
   wanderRadius: 400
-  wanderTimer: 10
+  wanderTimer: 6
   Home: {fileID: 0}
   specialDamage: 25
   basicDamage: 10

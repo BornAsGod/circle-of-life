@@ -27,7 +27,7 @@ public class DetectionScript : MonoBehaviour
             Debug.Log("Food Detected!");
             FoodScanned scannedFood = new FoodScanned();
             scannedFood.Distance = Vector3.Distance(transform.root.position, other.transform.position);
-            scannedFood.Type = other.gameObject.layer;
+            scannedFood.Type = other.GetComponent<CollectFood>().FoodID;
             scannedFood.Object = other.gameObject;
             scannedFood.Position = other.transform.position;
             AiScript.DetectedFood.Add(scannedFood);

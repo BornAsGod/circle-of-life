@@ -21,8 +21,10 @@ public class AIController : MonoBehaviour
     public float specialAttackBar = 0f; //Mana bar
     [SerializeField] private NavMeshAgent agent;
 
-    [Header("Food")] 
+    [Header("Food")]
+
     public int FavoriteFood;
+
     public static float foodHealing = 15f;
     public static float favoriteFoodMana = 25f;
 
@@ -118,12 +120,12 @@ public class AIController : MonoBehaviour
         yield return new WaitForFixedUpdate();
     }
     
-    public void OnFoodCollected(GameObject type)
+    public void OnFoodCollected(GameObject type, int id)
     {
         
         Debug.Log("Food collected!");
 
-        if (type.layer == FavoriteFood)
+        if (id == FavoriteFood)
         {
             Debug.Log("Favorite food detected!");
             GetFood(foodHealing, favoriteFoodMana);

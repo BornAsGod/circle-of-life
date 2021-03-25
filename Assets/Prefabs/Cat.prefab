@@ -1147,7 +1147,7 @@ MonoBehaviour:
   Health: 100
   specialAttackBar: 0
   agent: {fileID: 7635323702083613286}
-  FavoriteFood: 17
+  FavoriteFood: 3
   anim: {fileID: 7635323703379562556}
   wanderRadius: 400
   wanderTimer: 10
