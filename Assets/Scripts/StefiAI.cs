@@ -10,7 +10,7 @@ public class StefiAI : BasePlayer
         {
             switch (Player.Health)
             {
-                case float _ when (Player.Health > 75f):
+                case float _ when (Player.Health >= 75f):
                     
                     if (DetectedEnemies.Count == 1)
                     {
@@ -35,7 +35,7 @@ public class StefiAI : BasePlayer
                         }
                         else
                         {
-                            yield return Move(GetClosestEnemy().Position + new Vector3(20f, 0f, 20f));
+                            yield return Move(Player.Home.position);
                         }
                     }
 
