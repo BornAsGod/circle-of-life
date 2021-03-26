@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public bool isGamePaused = false;
 
     public GameObject menuOverlay;
+    public GameObject gameInstructions;
     
     [Header("Prefabs")] 
     public GameObject[] playerPrefabs = new GameObject[5];
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
     {
        if(Input.GetKeyDown(KeyCode.Space))
        {
+           gameInstructions.SetActive(false);
            foreach (var player in players)
            {
                isGameStarted = true;
