@@ -8,58 +8,38 @@ public class AndreiAI : BasePlayer
     {
         while (Player.Health > 0f)
         {
-            if (Player.Health > 75f)
-            {
-                if (DetectedEnemies.Count > 0)
-                {
-                        yield return Move(GetClosestEnemy().Position);
 
-                }else if (DetectedFood.Count > 0)
-                {
-                    if (GetClosestFood().Type == Player.FavoriteFood)
-                    {
-                        yield return Move(GetClosestFood().Position);
-                    }
-                }else
-                {
-                    yield return Move(wanderTarget);
-                }
-            }
-            if (Player.Health <= 75 && Player.Health >= 50)
+            if (Player.Health > 35f)
             {
                 if (DetectedEnemies.Count > 0)
                 {
                     if (Player.Mana == 100f)
                     {
+                        TurnTowardsPlayer(GetClosestEnemy().Object);
                         SpecialAttack();
                         yield return null;
-                    }else
+                    }
+                    else
                     {
                         yield return Move(GetClosestEnemy().Position);
                     }
                 }
-                if (DetectedFood.Count > 0)
+                else if (DetectedFood.Count > 0)
                 {
-                    yield return Move(GetClosestFood().Position);
-                }else
-                {
-                    yield return Move(wanderTarget);
-                }
-            }
-            if (Player.Health <= 49 && Player.Health >= 20)
-            {
-                if (DetectedFood.Count > 0)
-                {
-                    if (GetClosestFood().Type == Player.FavoriteFood)
-                    {
+                     if (GetClosestFood().Type == Player.FavoriteFood)
+                     {
                         yield return Move(GetClosestFood().Position);
-                    }
+                     }
+                     else
+                     {
+                         yield return Move(GetClosestFood().Position);
+                     }
                 }else
                 {
                     yield return RandomMove(wanderTarget);
                 }
             }
-            if (Player.Health <= 20)
+            if (Player.Health < 35f)
             {
                 if (DetectedFood.Count > 0)
                 {
@@ -67,15 +47,10 @@ public class AndreiAI : BasePlayer
                     {
                         yield return Move(GetClosestFood().Position);
                     }else
-                    {
+                     {
                         yield return Move(GetClosestFood().Position);
-                    }
-
-                }else if (DetectedEnemies.Count > 0)
-                {
-                    yield return Move(GetClosestEnemy().Position);
-                }
-                else
+                     }
+                }else
                 {
                     yield return RandomMove(wanderTarget);
                 }
@@ -102,3 +77,84 @@ public class AndreiAI : BasePlayer
         yield return null;
     }
 }
+
+
+
+
+
+
+
+
+
+/*if (Player.Health > 75f)
+{
+    if (DetectedEnemies.Count > 0)
+    {
+            yield return Move(GetClosestEnemy().Position);
+
+    }else if (DetectedFood.Count > 0)
+    {
+        if (GetClosestFood().Type == Player.FavoriteFood)
+        {
+            yield return Move(GetClosestFood().Position);
+        }
+    }else
+    {
+        yield return Move(wanderTarget);
+    }
+}
+if (Player.Health <= 75 && Player.Health >= 50)
+{
+    if (DetectedEnemies.Count > 0)
+    {
+        if (Player.Mana == 100f)
+        {
+            SpecialAttack();
+            yield return null;
+        }else
+        {
+            yield return Move(GetClosestEnemy().Position);
+        }
+    }
+    if (DetectedFood.Count > 0)
+    {
+        yield return Move(GetClosestFood().Position);
+    }else
+    {
+        yield return Move(wanderTarget);
+    }
+}
+if (Player.Health <= 49 && Player.Health >= 20)
+{
+    if (DetectedFood.Count > 0)
+    {
+        if (GetClosestFood().Type == Player.FavoriteFood)
+        {
+            yield return Move(GetClosestFood().Position);
+        }
+    }else
+    {
+        yield return RandomMove(wanderTarget);
+    }
+}
+if (Player.Health <= 20)
+{
+    if (DetectedFood.Count > 0)
+    {
+        if (GetClosestFood().Type == Player.FavoriteFood)
+        {
+            yield return Move(GetClosestFood().Position);
+        }else
+        {
+            yield return Move(GetClosestFood().Position);
+        }
+
+    }else if (DetectedEnemies.Count > 0)
+    {
+        yield return Move(GetClosestEnemy().Position);
+    }
+    else
+    {
+        yield return RandomMove(wanderTarget);
+    }
+}*/
