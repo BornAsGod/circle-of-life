@@ -27,7 +27,7 @@ public class AIController : MonoBehaviour
 
     [Header("Food")]
     public int FavoriteFood;
-    public static float foodHealing = 15f;
+    public static float foodHealing = 10f;
     public static float favoriteFoodMana = 25f;
 
     [Header("Animation")] 

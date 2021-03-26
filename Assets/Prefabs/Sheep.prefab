@@ -831,8 +831,8 @@ MonoBehaviour:
   wanderRadius: 250
   wanderTimer: 3
   Home: {fileID: 0}
-  specialDamage: 25
-  basicDamage: 10
+  specialDamage: 30
+  basicDamage: 15
   ProjectilePrefab: {fileID: 7532958096377329594, guid: c49e4b4bf6168114a95d4419c19e67ac,
     type: 3}
   ProjectileSpawn: {fileID: 7441231019423678384}
