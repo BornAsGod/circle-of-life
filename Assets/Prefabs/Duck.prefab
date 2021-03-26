@@ -158,8 +158,8 @@ MonoBehaviour:
   healthSound: {fileID: 4214297375763537901}
   Regen: {fileID: 3733959327157494447}
   Damage: {fileID: 8896960682874187826}
-  wanderRadius: 250
-  wanderTimer: 5
+  wanderRadius: 200
+  wanderTimer: 3
   Home: {fileID: 0}
   specialDamage: 30
   basicDamage: 15
