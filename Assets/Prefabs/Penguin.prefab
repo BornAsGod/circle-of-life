@@ -156,7 +156,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3661456170123696085}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: 11}
+  m_LocalPosition: {x: 0, y: 4, z: 8.44}
   m_LocalScale: {x: 15, y: 15, z: 15}
   m_Children: []
   m_Father: {fileID: 5550827986323121947}
@@ -181,7 +181,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.35
   m_Center: {x: 0, y: 0, z: 0.05}
 --- !u!114 &2283732495646547128
 MonoBehaviour:
@@ -2122,7 +2122,8 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4680189330463127634, guid: 78a9ef5b2e835e34bb57c70ba9e75944, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 78a9ef5b2e835e34bb57c70ba9e75944, type: 3}
 --- !u!198 &1213154000736565843 stripped
 ParticleSystem:
