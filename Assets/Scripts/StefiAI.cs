@@ -94,7 +94,6 @@ public class StefiAI : BasePlayer
 
     public override IEnumerator ScannedFoodEvent(FoodScanned food)
     {
-        Debug.Log(DetectedFood.Count);
         if (food.Type == Player.FavoriteFood)
         {
             yield return Move(food.Position);
