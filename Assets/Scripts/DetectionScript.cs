@@ -24,7 +24,6 @@ public class DetectionScript : MonoBehaviour
                 return;
             }
             //Add food data to list
-            Debug.Log("Food Detected!");
             FoodScanned scannedFood = new FoodScanned();
             scannedFood.Distance = Vector3.Distance(transform.root.position, other.transform.position);
             scannedFood.Type = other.GetComponent<CollectFood>().FoodID;
@@ -38,7 +37,6 @@ public class DetectionScript : MonoBehaviour
             return;
         }
         //Add enemy data to list
-        Debug.Log("Enemy Detected!");
         ScannedEnemy scannedEnemy = new ScannedEnemy();
         scannedEnemy.Distance = Vector3.Distance(transform.root.position, other.transform.position);
         scannedEnemy.Position = other.transform.position;
@@ -83,7 +81,6 @@ public class DetectionScript : MonoBehaviour
                 if (food.Object == other.gameObject)
                 {
                     AiScript.DetectedFood.Remove(food);
-                    Debug.Log("Food Lost!");
                 }
             }
 
@@ -95,7 +92,6 @@ public class DetectionScript : MonoBehaviour
             if (enemy.Object == other.gameObject)
             {
                 AiScript.DetectedEnemies.Remove(enemy);
-                Debug.Log("Enemy Lost!");
             }
         }
     }

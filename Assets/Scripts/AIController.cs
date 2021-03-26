@@ -134,7 +134,15 @@ public class AIController : MonoBehaviour
          * Moves player to set destination
          */
         agent.SetDestination(position);
-        yield return new WaitUntil(() => agent.remainingDistance < 1f);
+
+        if (Health > 0f)
+        {
+            yield return new WaitUntil(() => agent.remainingDistance < 1f);
+        }
+        else
+        {
+            yield return new WaitForFixedUpdate();
+        }
     }
 
     public IEnumerator _RandomMove(Vector3 position)
