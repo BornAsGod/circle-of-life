@@ -6,6 +6,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public bool isGameStarted = false;
+
+    public bool isGamePaused = false;
+
+    public GameObject menuOverlay;
     
     [Header("Prefabs")] 
     public GameObject[] playerPrefabs = new GameObject[5];
@@ -44,5 +48,36 @@ public class GameManager : MonoBehaviour
                player.RunGame();
            } 
        }
+
+       if (Input.GetKeyDown(KeyCode.Escape))
+       {
+           if (!isGamePaused)
+           {
+               PauseGame();
+           }
+           else
+           {
+               ResumeGame();
+           }
+       }
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        menuOverlay.SetActive(false);
+        isGamePaused = false;
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        menuOverlay.SetActive(true);
+        isGamePaused = true;
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
