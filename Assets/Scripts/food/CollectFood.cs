@@ -23,6 +23,7 @@ public class CollectFood : MonoBehaviour
         AIController player = other.gameObject.GetComponentInParent<AIController>();
         player.OnFoodCollected(this.gameObject, FoodID);
         spawner.FoodSpawned--;
-        Destroy(this.gameObject);
+        transform.position = transform.position + new Vector3(0f, 1000f, 0f); 
+        Destroy(this.gameObject, 3f);
     }
 }

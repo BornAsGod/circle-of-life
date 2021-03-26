@@ -111,7 +111,8 @@ public class AIController : MonoBehaviour
 
         if (Health <= 0f)
         {
-            Destroy(this.gameObject);
+            transform.position = transform.position + new Vector3(0f, 1000f, 0f); 
+            Destroy(this.gameObject, 1f);
         }
     }
     
@@ -158,12 +159,8 @@ public class AIController : MonoBehaviour
     
     public void OnFoodCollected(GameObject type, int id)
     {
-        
-        Debug.Log("Food collected!");
-
         if (id == FavoriteFood)
         {
-            Debug.Log("Favorite food detected!");
             GetFood(foodHealing, favoriteFoodMana);
             UpdateFoodList(type);
             return;
@@ -179,8 +176,7 @@ public class AIController : MonoBehaviour
         {
             if (food.Object == _food)
             {
-                _Ai.DetectedFood.Remove(food);
-                Debug.Log("Removed collected food!");
+                _Ai.DetectedFood.Remove(food); 
             }
         }
     }
