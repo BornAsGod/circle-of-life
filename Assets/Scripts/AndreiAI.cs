@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AndreiAI : BasePlayer
 {
+  // The code seems a bit on the light side
+
     public override IEnumerator RunAI()
     {
         while (Player.Health > 0f)

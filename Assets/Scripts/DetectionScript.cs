@@ -17,6 +17,7 @@ public class DetectionScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
+      // it seems like only a couple variables change, perhaps a function with parameters could've been written? You can send a list as reference (standard behaviour)
         if (!other.CompareTag("Player"))
         {
             if (!other.CompareTag("Food"))
@@ -51,6 +52,7 @@ public class DetectionScript : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        // Seems like this data can be cached in enter and removed in exit for optimization
         if (!other.CompareTag("Player"))
         {
             return;
@@ -69,12 +71,17 @@ public class DetectionScript : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        // Think these two could've been placed in one function with the list as parameter (maybe with a bool for which case)
         if (!other.CompareTag("Player"))
         {
             if (!other.CompareTag("Food"))
             {
                 return;
             }
+
+            // Does the same thing as the lines below:
+            //AiScript.DetectedFood.RemoveAll(x => x.Object == other);
+
             //Remove out-of-range food from list
             foreach (var food in AiScript.DetectedFood.ToList())
             {

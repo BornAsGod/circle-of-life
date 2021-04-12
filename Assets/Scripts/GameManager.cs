@@ -12,6 +12,11 @@ public class GameManager : MonoBehaviour
     public GameObject menuOverlay;
     public GameObject gameInstructions;
     
+    // Maybe look into encapsulation with as little amount of public objects as possible. Use getters and (private) setters if you want more control
+    // If you need it to be serializable:
+    //[SerializeField]
+    //private GameObject myName;
+
     [Header("Prefabs")] 
     public GameObject[] playerPrefabs = new GameObject[5];
     
@@ -73,6 +78,9 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
+        // Setting the timescale to 0 prevents some devices from running properly (controllers don't get input as analogue stick requires it)
+        // It's better to stop everything based on one static variable (GameManager.isPaused) or accessible in a static instance (gameManager.isPaused)
+
         Time.timeScale = 0;
         menuOverlay.SetActive(true);
         isGamePaused = true;

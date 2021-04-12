@@ -26,6 +26,8 @@ public class FoodScanned //Stores detected food data
 }
 public class BasePlayer
 {
+    // Nice refactor of the base system
+
     public AIController Player = null;
     //Detection and Navigation
     public List<ScannedEnemy> DetectedEnemies = new List<ScannedEnemy>(); //List of detected enemies

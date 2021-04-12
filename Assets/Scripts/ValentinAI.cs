@@ -61,7 +61,7 @@ public class ValentinAI : BasePlayer
     private int Phase = 0;
     static Vector3 Duck = GameObject.FindGameObjectWithTag("Player").transform.position;
 
-    
+    // Your code is very similar to Fadi's. You haven't done a lot of pushes either.
     public override IEnumerator RunAI()
     {
         while (Player.Health > 0)

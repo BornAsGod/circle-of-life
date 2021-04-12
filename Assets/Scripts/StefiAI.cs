@@ -8,6 +8,8 @@ public class StefiAI : BasePlayer
     {
         while (Player.Health > 0f)
         {
+            // Interesting usage of switch cases, perhaps look into duke nukem 3D for switch cases gone wrong (It's C++ code, main game loop switch statement is 3000 lines long)
+            // The code won't be scalable is my point, perhaps break it down to functions that you call (can be your own enumerators in your case)
             switch (Player.Health)
             {
                 case float _ when (Player.Health >= 75f):

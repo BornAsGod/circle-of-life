@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// IDK, I don't know is not a good name for a class
 public class idk : BasePlayer
 {
     public override IEnumerator RunAI()
